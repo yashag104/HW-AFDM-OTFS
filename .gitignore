@@ -1,0 +1,9 @@
+# HLS C-simulation build output
+hls/build/
+# AMD ap_fixed headers (git clone https://github.com/Xilinx/HLS_arbitrary_Precision_Types hls/third_party/ap_types)
+hls/third_party/
+# ROM tables and test vectors (regenerate with matlab/sims/export_hls_vectors.m)
+hls/generated/
+# MATLAB run logs
+results/*.log
+hls/proj/
