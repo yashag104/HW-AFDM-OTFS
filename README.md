@@ -30,5 +30,26 @@ Run everything from the `matlab/` folder after `setup_paths`.
 
 Needs base MATLAB only (no Fixed-Point, Communications or Signal Processing toolboxes).
 
+## HLS (`hls/`)
+
+| File | Contents |
+|---|---|
+| `src/types.h`   | `ap_fixed` data / ROM types, identical to `fx_config.m` |
+| `src/fft.h`     | radix-2 DIT FFT, bit-exact with `fft_fx.m` |
+| `src/blocks.cpp`| six top functions: AFDM mod/demod, OTFS Zak mod/demod, OTFS ISFFT/SFFT mod/demod |
+| `src/mp.cpp`    | fixed-point MP detector (S taps per row, QPSK, damping, convergence stop) |
+| `tb/`           | C testbenches: transforms must match MATLAB bit for bit; MP is checked against the float MATLAB detector |
+| `scripts/run_hls.tcl` | C-sim, synthesis and Vivado implementation of one block on `xc7z020clg400-1` @ 100 MHz |
+
+C simulation without Vitis (g++ and AMD's open-source headers):
+
+```sh
+git clone https://github.com/Xilinx/HLS_arbitrary_Precision_Types hls/third_party/ap_types
+# in MATLAB (matlab/): setup_paths; export_hls_vectors(12, 16, 'LEO-Ka', 20); export_mp_frames('LEO-Ka', 'AFDM', 12, 16, 12, 200)
+cd hls && make check WD=12 WR=16 SCEN=LEOKa && make mp-check MP_S=16 FRAMES=generated/mp/LEOKa_AFDM_S16_12dB.txt
+```
+
+Synthesis (needs Vitis HLS 2024.2+): `TOP=afdm_mod WD=12 WR=16 SCEN=LEOKa vitis-run --mode hls --tcl scripts/run_hls.tcl`
+
 **Open items:** the V2X tap profile is a placeholder (`tdl_profile.m`); the LEO delay spread
 (300 ns) and Doppler pre-compensation interval (20 ms) are assumptions to be set from TR 38.811.
