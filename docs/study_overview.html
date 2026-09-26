@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AFDM–OTFS Hardware Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F4F6F5;
+    --surface: #FFFFFF;
+    --ink: #17201C;
+    --muted: #56625C;
+    --rule: #D2D9D5;
+    --afdm: #2a78d6;
+    --otfs: #eb6834;
+    --isfft: #1baf7a;
+    --good: #1d6f45;
+    --good-bg: #E1F1E7;
+    --wait: #7d5200;
+    --wait-bg: #FBEED2;
+    --soft: #EAEEEC;
+    --fig-bg: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #101412;
+      --surface: #171C1A;
+      --ink: #E3EAE6;
+      --muted: #9AA7A0;
+      --rule: #2B3430;
+      --afdm: #3987e5;
+      --otfs: #d95926;
+      --isfft: #199e70;
+      --good: #74d3a0;
+      --good-bg: #15301F;
+      --wait: #f0c264;
+      --wait-bg: #33290F;
+      --soft: #1F2624;
+      --fig-bg: #F4F6F5;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #101412;
+    --surface: #171C1A;
+    --ink: #E3EAE6;
+    --muted: #9AA7A0;
+    --rule: #2B3430;
+    --afdm: #3987e5;
+    --otfs: #d95926;
+    --isfft: #199e70;
+    --good: #74d3a0;
+    --good-bg: #15301F;
+    --wait: #f0c264;
+    --wait-bg: #33290F;
+    --soft: #1F2624;
+    --fig-bg: #F4F6F5;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 15px/1.6 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .page {
+    max-width: 940px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 40px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  h1, h2, h3 {
+    font-family: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.15;
+    text-wrap: balance;
+    margin: 0;
+  }
+  h1 { font-size: 40px; letter-spacing: -0.01em; }
+  h2 { font-size: 27px; }
+  h3 { font-size: 19px; font-weight: 500; }
+  p { margin: 0; max-width: 68ch; }
+  .mono, code, td.num { font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  code { font-size: 0.9em; background: var(--soft); padding: 1px 5px; border-radius: 3px; }
+  .eyebrow {
+    font: 500 12px/1 "IBM Plex Mono", ui-monospace, monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  section { display: flex; flex-direction: column; gap: 18px; }
+  .lede { font-size: 17px; color: var(--muted); max-width: 64ch; }
+
+  header { display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid var(--rule); padding-bottom: 28px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 13px; color: var(--muted); }
+  .facts b { color: var(--ink); font-weight: 500; font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .diagram {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 16px;
+    overflow-x: auto;
+    color: var(--ink);
+  }
+  .diagram svg { display: block; width: 100%; min-width: 720px; height: auto; }
+  figcaption { font-size: 13.5px; color: var(--muted); max-width: 76ch; }
+  figcaption b { color: var(--ink); font-weight: 600; }
+
+  /* SVG vocabulary (page CSS styles the inline drawings) */
+  .bx { fill: var(--surface); stroke: currentColor; stroke-width: 1.4; }
+  .bx-soft { fill: var(--soft); stroke: currentColor; stroke-width: 1.4; }
+  .bx-wait { fill: var(--surface); stroke: var(--muted); stroke-width: 1.4; stroke-dasharray: 5 4; }
+  .zone { fill: none; stroke: currentColor; stroke-width: 1; stroke-dasharray: 6 5; opacity: 0.55; }
+  .ln { fill: none; stroke: currentColor; stroke-width: 1.4; }
+  .ln-dash { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-dasharray: 5 4; }
+  .t { fill: currentColor; font: 500 13px "IBM Plex Sans", system-ui, sans-serif; }
+  .ts { fill: var(--muted); font: 400 11.5px "IBM Plex Mono", ui-monospace, monospace; }
+  .tl { fill: var(--muted); font: 500 11px "IBM Plex Mono", ui-monospace, monospace; letter-spacing: 0.06em; }
+  .ti { fill: currentColor; font: italic 400 13px "IBM Plex Sans", system-ui, sans-serif; }
+  .tw { fill: var(--muted); font: 400 12px "IBM Plex Sans", system-ui, sans-serif; }
+  .ah { fill: currentColor; }
+  .f-afdm  { fill: color-mix(in srgb, var(--afdm) 16%, var(--surface));  stroke: var(--afdm);  stroke-width: 1.4; }
+  .f-otfs  { fill: color-mix(in srgb, var(--otfs) 16%, var(--surface));  stroke: var(--otfs);  stroke-width: 1.4; }
+  .f-isfft { fill: color-mix(in srgb, var(--isfft) 16%, var(--surface)); stroke: var(--isfft); stroke-width: 1.4; }
+  .c-afdm { fill: var(--afdm); } .c-otfs { fill: var(--otfs); } .c-isfft { fill: var(--isfft); }
+  .tick { stroke: var(--muted); stroke-width: 1.2; fill: none; }
+
+  /* Novelty list */
+  .claims { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+  .claim {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    gap: 6px 24px;
+    padding-block: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .claim h3 { grid-column: 1; }
+  .claim .why { grid-column: 1; font-size: 14px; color: var(--muted); }
+  .claim .why b { color: var(--ink); font-weight: 500; }
+  .claim .status { grid-column: 2; grid-row: 1 / span 2; align-self: start; justify-self: end; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    font: 500 12px/1 "IBM Plex Mono", ui-monospace, monospace;
+    padding: 6px 9px; border-radius: 999px; white-space: nowrap;
+  }
+  .chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .chip.have { color: var(--good); background: var(--good-bg); }
+  .chip.wait { color: var(--wait); background: var(--wait-bg); }
+  .chip.sup  { color: var(--muted); background: var(--soft); }
+  .avoid {
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+    padding: 14px 16px; font-size: 14px; display: flex; flex-direction: column; gap: 4px;
+  }
+  .avoid b { font-weight: 600; }
+
+  /* Tables */
+  .tbl-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  th { font: 500 12px "IBM Plex Mono", ui-monospace, monospace; color: var(--muted); letter-spacing: 0.04em; background: var(--soft); }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 13.5px; }
+  th .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; vertical-align: 0; }
+  td .note { color: var(--muted); font-size: 12px; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+
+  .verdict {
+    background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--ink);
+    border-radius: 6px; padding: 16px 18px; font-size: 16px; max-width: none;
+  }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .two h3 { margin-bottom: 10px; }
+  ul.plain { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 9px; font-size: 14px; }
+  ul.plain li::marker { color: var(--muted); }
+  ul.plain b { font-weight: 600; }
+  .fix { color: var(--muted); display: block; }
+
+  .plot { background: var(--fig-bg); border: 1px solid var(--rule); border-radius: 6px; padding: 10px; }
+  .plot img { display: block; width: 100%; height: auto; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 32px; }
+    .claim { grid-template-columns: 1fr; }
+    .claim .status { grid-column: 1; grid-row: auto; justify-self: start; }
+    .two { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<header>
+  <span class="eyebrow">Research status · 26 Sep 2026</span>
+  <h1>Hardware-complexity-aware comparison of AFDM and OTFS across V2X and LEO regimes</h1>
+  <p class="lede">How the system is built, which findings could make the paper publishable, and an honest read on the MATLAB results before any FPGA numbers exist.</p>
+  <div class="facts">
+    <span>Frame <b>N = 256</b> (OTFS 16 × 16)</span>
+    <span>Bandwidth <b>1.92 MHz</b>, frame <b>133 µs</b></span>
+    <span>Target <b>Zynq-7020</b> @ 100 MHz</span>
+    <span>Branch <b>matlab-hls-models</b> · <b>dfe2aa7</b></span>
+  </div>
+</header>
+
+<section>
+  <span class="eyebrow">System architecture</span>
+  <h2>The signal chain</h2>
+  <p>Both waveforms share everything except the transform pair. The modulator, demodulator and MP detector are the blocks that go to the FPGA; the channel is modelled only in MATLAB.</p>
+
+  <figure>
+    <div class="diagram">
+      <svg viewBox="0 0 1000 250" role="img" aria-label="Signal chain: QPSK symbols go through the AFDM or OTFS modulator and prefix, the time-varying channel and noise, then the demodulator and MP detector. Modulator, demodulator and detector run on the FPGA; the detector receives the true effective channel truncated to S taps per row.">
+        <defs>
+          <marker id="a1" viewBox="0 0 8 8" refX="7.5" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0,0 L8,4 L0,8 z" class="ah"/>
+          </marker>
+        </defs>
+
+        <!-- zones -->
+        <rect class="zone" x="136" y="36" width="124" height="112" rx="6"/>
+        <text class="tl" x="142" y="28">FPGA · TX</text>
+        <rect class="zone" x="280" y="36" width="336" height="112" rx="6"/>
+        <text class="tl" x="286" y="28">MATLAB CHANNEL MODEL</text>
+        <rect class="zone" x="626" y="36" width="278" height="112" rx="6"/>
+        <text class="tl" x="632" y="28">FPGA · RX</text>
+
+        <!-- blocks -->
+        <rect class="bx-soft" x="10" y="62" width="96" height="60" rx="4"/>
+        <text class="t" x="58" y="88" text-anchor="middle">QPSK</text>
+        <text class="ts" x="58" y="106" text-anchor="middle">256 symbols</text>
+
+        <rect class="bx" x="146" y="62" width="104" height="60" rx="4"/>
+        <text class="t" x="198" y="88" text-anchor="middle">Modulator</text>
+        <text class="ts" x="198" y="106" text-anchor="middle">IDAFT · IDZT</text>
+
+        <rect class="bx" x="290" y="62" width="96" height="60" rx="4"/>
+        <text class="t" x="338" y="88" text-anchor="middle">Prefix</text>
+        <text class="ts" x="338" y="106" text-anchor="middle">Ncp = 16</text>
+
+        <rect class="bx" x="426" y="62" width="132" height="60" rx="4"/>
+        <text class="t" x="492" y="88" text-anchor="middle">Channel</text>
+        <text class="ts" x="492" y="106" text-anchor="middle">per path: l, ν, β</text>
+
+        <circle class="bx" cx="596" cy="92" r="13"/>
+        <path class="ln" d="M590,92 H602 M596,86 V98"/>
+        <text class="ts" x="596" y="66" text-anchor="middle">AWGN</text>
+
+        <rect class="bx" x="636" y="62" width="104" height="60" rx="4"/>
+        <text class="t" x="688" y="88" text-anchor="middle">Demodulator</text>
+        <text class="ts" x="688" y="106" text-anchor="middle">DAFT · DZT</text>
+
+        <rect class="bx" x="780" y="62" width="114" height="60" rx="4"/>
+        <text class="t" x="837" y="88" text-anchor="middle">MP detector</text>
+        <text class="ts" x="837" y="106" text-anchor="middle">S taps · ≤ 10 it</text>
+
+        <rect class="bx-soft" x="924" y="62" width="66" height="60" rx="4"/>
+        <text class="t" x="957" y="97" text-anchor="middle">BER</text>
+
+        <!-- forward arrows -->
+        <line class="ln" x1="106" y1="92" x2="144" y2="92" marker-end="url(#a1)"/>
+        <text class="ti" x="125" y="84" text-anchor="middle">x</text>
+        <line class="ln" x1="250" y1="92" x2="288" y2="92" marker-end="url(#a1)"/>
+        <text class="ti" x="269" y="84" text-anchor="middle">s</text>
+        <line class="ln" x1="386" y1="92" x2="424" y2="92" marker-end="url(#a1)"/>
+        <line class="ln" x1="558" y1="92" x2="581" y2="92" marker-end="url(#a1)"/>
+        <line class="ln" x1="609" y1="92" x2="634" y2="92" marker-end="url(#a1)"/>
+        <text class="ti" x="621" y="84" text-anchor="middle">r</text>
+        <line class="ln" x1="740" y1="92" x2="778" y2="92" marker-end="url(#a1)"/>
+        <text class="ti" x="759" y="84" text-anchor="middle">y</text>
+        <line class="ln" x1="894" y1="92" x2="922" y2="92" marker-end="url(#a1)"/>
+        <text class="ti" x="908" y="84" text-anchor="middle">x̂</text>
+
+        <!-- genie channel path -->
+        <path class="ln-dash" d="M492,122 V196 H672"/>
+        <rect class="bx-soft" x="674" y="176" width="124" height="40" rx="4"/>
+        <text class="t" x="736" y="195" text-anchor="middle">Keep S largest</text>
+        <text class="ts" x="736" y="209" text-anchor="middle">taps per row</text>
+        <path class="ln-dash" d="M798,196 H837 V124" marker-end="url(#a1)"/>
+        <text class="tw" x="502" y="186">true channel · perfect CSI</text>
+      </svg>
+    </div>
+    <figcaption><b>Figure 1.</b> The only difference between the waveforms is the transform pair inside the modulator and demodulator. The dashed path is a modelling shortcut: the detector is handed the true effective channel <code>Demod · H · Mod</code>, cut to its S strongest taps per row, instead of an estimate. Channel regimes: V2X at 5.9 GHz, LEO-S at 2 GHz and LEO-Ka at 20 GHz (3GPP NTN-TDL-C, 600 km orbit).</figcaption>
+  </figure>
+
+  <figure>
+    <div class="diagram">
+      <svg viewBox="0 0 1000 232" role="img" aria-label="The three modulator datapaths drawn to scale by complex-multiply slots: AFDM and OTFS in ISFFT form both need 1536, OTFS in Zak form needs 512.">
+        <!-- row labels -->
+        <text class="t" x="10" y="47" style="fill: var(--afdm)">AFDM</text>
+        <text class="t" x="10" y="117" style="fill: var(--otfs)">OTFS · Zak</text>
+        <text class="t" x="10" y="187" style="fill: var(--isfft)">OTFS · ISFFT</text>
+
+        <!-- AFDM: 2 + 8 + 2 units, unit = 46 px -->
+        <rect class="f-afdm" x="170" y="20" width="90" height="44" rx="3"/>
+        <text class="t" x="215" y="47" text-anchor="middle">× chirp c₂</text>
+        <rect class="f-afdm" x="262" y="20" width="366" height="44" rx="3"/>
+        <text class="t" x="445" y="47" text-anchor="middle">IFFT 256 · 8 stages</text>
+        <rect class="f-afdm" x="630" y="20" width="90" height="44" rx="3"/>
+        <text class="t" x="675" y="47" text-anchor="middle">× chirp c₁</text>
+
+        <!-- OTFS Zak: 4 units -->
+        <rect class="f-otfs" x="170" y="90" width="182" height="44" rx="3"/>
+        <text class="t" x="261" y="117" text-anchor="middle">IFFT 16 on each row</text>
+
+        <!-- OTFS ISFFT: 4 + 4 + 4 units -->
+        <rect class="f-isfft" x="170" y="160" width="182" height="44" rx="3"/>
+        <text class="t" x="261" y="187" text-anchor="middle">FFT 16 · columns</text>
+        <rect class="f-isfft" x="354" y="160" width="182" height="44" rx="3"/>
+        <text class="t" x="445" y="187" text-anchor="middle">IFFT 16 · rows</text>
+        <rect class="f-isfft" x="538" y="160" width="182" height="44" rx="3"/>
+        <text class="t" x="629" y="187" text-anchor="middle">IFFT 16 · columns</text>
+
+        <!-- right annotations -->
+        <text class="t" x="742" y="39">1,536 multiply slots</text>
+        <text class="ts" x="742" y="56">13,312 FLOP · 2 chirp ROMs</text>
+        <text class="t" x="742" y="109">512 multiply slots</text>
+        <text class="ts" x="742" y="126">5,120 FLOP · twiddle ROM only</text>
+        <text class="t" x="742" y="179">1,536 multiply slots</text>
+        <text class="ts" x="742" y="196">15,360 FLOP · 3 passes</text>
+
+        <!-- scale bar -->
+        <path class="tick" d="M170,220 H216 M170,215 V225 M216,215 V225"/>
+        <text class="ts" x="224" y="224">= one FFT stage = 128 complex multiplies</text>
+      </svg>
+    </div>
+    <figcaption><b>Figure 2.</b> The modulators drawn to scale: box width is the number of complex-multiply slots (including trivial twiddles). With rectangular pulses, ISFFT + Heisenberg is mathematically identical to the single-pass Zak form, which needs a third of the multiplies of AFDM. AFDM's two chirp passes cost as much as two extra FFT stages. The demodulators mirror these paths.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="diagram">
+      <svg viewBox="0 0 1000 150" role="img" aria-label="Verification and tool flow: float model, bit-true fixed-point model, exported vectors and bit-exact HLS C simulation are done; HLS synthesis, place and route on the Zynq-7020 and the cost-versus-BER correlation are pending the AMD tools.">
+        <defs>
+          <marker id="a3" viewBox="0 0 8 8" refX="7.5" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0,0 L8,4 L0,8 z" class="ah"/>
+          </marker>
+        </defs>
+        <rect class="bx" x="10" y="20" width="126" height="56" rx="4"/>
+        <text class="t" x="73" y="44" text-anchor="middle">Float model</text>
+        <text class="ts" x="73" y="62" text-anchor="middle">MATLAB</text>
+        <rect class="bx" x="152" y="20" width="126" height="56" rx="4"/>
+        <text class="t" x="215" y="44" text-anchor="middle">Fixed point</text>
+        <text class="ts" x="215" y="62" text-anchor="middle">bit-true</text>
+        <rect class="bx" x="294" y="20" width="126" height="56" rx="4"/>
+        <text class="t" x="357" y="44" text-anchor="middle">Vectors · ROMs</text>
+        <text class="ts" x="357" y="62" text-anchor="middle">exported</text>
+        <rect class="bx" x="436" y="20" width="126" height="56" rx="4"/>
+        <text class="t" x="499" y="44" text-anchor="middle">HLS C-sim</text>
+        <text class="ts" x="499" y="62" text-anchor="middle">0 mismatches</text>
+        <rect class="bx-wait" x="578" y="20" width="126" height="56" rx="4"/>
+        <text class="t" x="641" y="44" text-anchor="middle">Synthesis</text>
+        <text class="ts" x="641" y="62" text-anchor="middle">Vitis HLS</text>
+        <rect class="bx-wait" x="720" y="20" width="126" height="56" rx="4"/>
+        <text class="t" x="783" y="44" text-anchor="middle">Place &amp; route</text>
+        <text class="ts" x="783" y="62" text-anchor="middle">Zynq-7020</text>
+        <rect class="bx-wait" x="862" y="20" width="128" height="56" rx="4"/>
+        <text class="t" x="926" y="44" text-anchor="middle">Cost vs BER</text>
+        <text class="ts" x="926" y="62" text-anchor="middle">LUT · DSP · power</text>
+
+        <line class="ln" x1="136" y1="48" x2="150" y2="48" marker-end="url(#a3)"/>
+        <line class="ln" x1="278" y1="48" x2="292" y2="48" marker-end="url(#a3)"/>
+        <line class="ln" x1="420" y1="48" x2="434" y2="48" marker-end="url(#a3)"/>
+        <line class="ln-dash" x1="562" y1="48" x2="576" y2="48" marker-end="url(#a3)"/>
+        <line class="ln-dash" x1="704" y1="48" x2="718" y2="48" marker-end="url(#a3)"/>
+        <line class="ln-dash" x1="846" y1="48" x2="860" y2="48" marker-end="url(#a3)"/>
+
+        <path class="tick" d="M10,96 V104 H562 V96"/>
+        <text class="ts" x="286" y="124" text-anchor="middle">done and verified</text>
+        <path class="tick" d="M578,96 V104 H990 V96" style="stroke-dasharray: 4 4"/>
+        <text class="ts" x="784" y="124" text-anchor="middle">waiting for Vitis HLS / Vivado</text>
+      </svg>
+    </div>
+    <figcaption><b>Figure 3.</b> Verification flow. The six transform blocks match MATLAB bit for bit; the fixed-point MP detector is within 3% of the floating-point BER with 99.7–100% identical decisions. Everything to the right of the dashed arrow needs the AMD tools installed.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <span class="eyebrow">Novelty</span>
+  <h2>What could make it publishable</h2>
+  <p>The paper stands on the combination below, not on any one item. Items marked "needs FPGA results" are the core contribution and cannot be claimed until synthesis runs.</p>
+
+  <div class="claims">
+    <div class="claim">
+      <h3>First receiver-inclusive, same-target synthesis of AFDM and OTFS</h3>
+      <p class="why">Transforms <b>and</b> the MP detector for both waveforms on one Zynq-7020, same tools, same clock. <b>Gap:</b> Hassan et al. (J. Signal Process. Syst. 2026) put both modulators on a CGRA but no receiver, no BER link, no channel regimes.</p>
+      <span class="status chip wait">Needs FPGA results</span>
+    </div>
+    <div class="claim">
+      <h3>First hardware test of AFDM's "marginal cost" claim</h3>
+      <p class="why">arXiv:2602.08163 puts AFDM's overhead over OFDM at 12/(5 log₂N) FLOPs; arXiv:2605.23062 calls it a "firmware patch" and cites no measurement. The only experiment behind them is a USRP demo that runs all baseband processing on a PC. <b>Gap:</b> no FPGA measurement exists.</p>
+      <span class="status chip wait">Needs FPGA results</span>
+    </div>
+    <div class="claim">
+      <h3>AFDM needs a wider detector under fractional Doppler</h3>
+      <p class="why">AFDM's Doppler leakage spreads along the full 256-sample row; OTFS's stays within 16 Doppler bins. At S = 16 taps OTFS keeps 99.8% of the channel energy against AFDM's 98.9%, and AFDM levels off at a higher BER. <b>Gap:</b> leakage is known qualitatively (Rou et al. 2024, Fig. 3); its cost in detector width has not been quantified.</p>
+      <span class="status chip have">Evidence in hand</span>
+    </div>
+    <div class="claim">
+      <h3>The cost ranking flips with the OTFS pulse assumption</h3>
+      <p class="why">Published cost comparisons assume pulse-shaped OTFS (AFDM cheaper); published BER comparisons, including the NTN paper, assume rectangular pulses, where OTFS collapses to the Zak form and needs a third of AFDM's multiplies (Figure 2). <b>Gap:</b> no one has measured both on the same platform under the same assumption.</p>
+      <span class="status chip have">Analysis done · HW to confirm</span>
+    </div>
+    <div class="claim">
+      <h3>Word-length requirement per waveform</h3>
+      <p class="why">No BER loss at 10-bit data for AFDM and OTFS-ISFFT, 8 bits for OTFS-Zak; at 6 bits AFDM and ISFFT hit error floors. <b>Gap:</b> no fixed-point comparison of the two waveforms has been published; the Bluestein-AFDM group lists it as future work.</p>
+      <span class="status chip have">Evidence in hand</span>
+    </div>
+    <div class="claim">
+      <h3>Cost of reconfiguring AFDM chirps across regimes</h3>
+      <p class="why">c₁ depends on the maximum Doppler (2N·c₁ = 5 for V2X and LEO-S, 7 for LEO-Ka), so a fixed chirp ROM serves one regime only. The price of a loadable ROM or a run-time chirp generator is exactly what "firmware patch" leaves out.</p>
+      <span class="status chip wait">Needs FPGA results</span>
+    </div>
+    <div class="claim">
+      <h3>Doppler rate, quantified per regime</h3>
+      <p class="why">Within one frame it adds at most 2 × 10⁻³ rad of phase and can be ignored; it matters only across frames, through drift of the Doppler pre-compensation (up to 116 Hz per 20 ms at Ka-band zenith). A supporting result that answers a question both reference papers leave open, not a headline.</p>
+      <span class="status chip sup">Supporting</span>
+    </div>
+    <div class="claim">
+      <h3>Open, bit-true MATLAB-to-HLS framework</h3>
+      <p class="why">One quantizer definition shared by MATLAB and <code>ap_fixed</code>, with exported vectors, so every hardware number traces back to a BER curve. Strengthens reproducibility; reviewers value it but it is not novelty by itself.</p>
+      <span class="status chip sup">Supporting</span>
+    </div>
+  </div>
+
+  <div class="avoid">
+    <b>Claim to avoid</b>
+    <span>"First hardware implementation of AFDM and OTFS" is false: Hassan et al. already implemented both modulators on one CGRA. Always say "receiver-inclusive" and "same-target".</span>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">MATLAB results</span>
+  <h2>Are the results good?</h2>
+  <p class="verdict"><b>Sound and internally consistent, but not yet publication grade.</b> Every model passes its self-checks, the hardware code matches MATLAB bit for bit, and one finding (AFDM's detector-width penalty) is genuinely interesting. What is missing is realism in a few inputs and more statistical depth at high SNR; the fixes are listed below.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th><span class="sw" style="background: var(--afdm)"></span>AFDM</th>
+          <th><span class="sw" style="background: var(--otfs)"></span>OTFS-Zak</th>
+          <th><span class="sw" style="background: var(--isfft)"></span>OTFS-ISFFT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>SQNR at 12-bit data, Tx / Rx</td><td class="num">50.0 / 49.9 dB</td><td class="num">59.6 / 53.6 dB</td><td class="num">49.5 / 48.8 dB</td></tr>
+        <tr><td>Smallest data width with no BER loss</td><td class="num">10 bits</td><td class="num">8 bits</td><td class="num">10 bits</td></tr>
+        <tr><td>Complex-multiply slots per modulator frame</td><td class="num">1,536</td><td class="num">512</td><td class="num">1,536</td></tr>
+        <tr><td>BER at 18 dB, LEO-Ka, S = 16</td><td class="num">1.5 × 10⁻⁵</td><td class="num">9.8 × 10⁻⁷ <span class="note">(1 error)</span></td><td class="num">= Zak <span class="note">(same maths)</span></td></tr>
+        <tr><td>Channel energy kept by S = 16 taps, LEO-Ka</td><td class="num">98.9 %</td><td class="num">99.8 %</td><td class="num">= Zak</td></tr>
+        <tr><td>BER at 24 dB, V2X, S = 16 <span class="note">(placeholder profile)</span></td><td class="num">6.4 × 10⁻⁴</td><td class="num">1.3 × 10⁻⁴</td><td class="num">= Zak</td></tr>
+        <tr><td>Mean MP iterations at 18 dB, V2X / LEO-S / LEO-Ka</td><td class="num">6.2 / 1.4 / 2.7</td><td class="num">5.4 / 1.3 / 2.4</td><td class="num">= Zak</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure>
+    <div class="plot"><img src="../results/ber_vs_taps.png" alt="BER at 18 dB against detector taps per row for V2X, LEO-S and LEO-Ka. AFDM and OTFS-Zak match up to about 8 taps; beyond that OTFS keeps improving while AFDM levels off, most clearly in LEO-Ka."></div>
+    <figcaption><b>Figure 4.</b> The key evidence: BER against the MP detector's width S (its hardware cost). The curves match up to S ≈ 8, then AFDM levels off. Same 2,000 frames for every point.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="plot"><img src="../results/ber_vs_snr.png" alt="BER against Es/N0 for the three regimes. The waveforms match below about 12 to 15 dB; above that AFDM levels off while OTFS-Zak keeps falling."></div>
+    <figcaption><b>Figure 5.</b> BER vs SNR with S = 16. The waveforms are indistinguishable at low SNR; the gap opens where the dropped taps start to dominate the noise.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="plot"><img src="../results/ber_vs_wordlength.png" alt="BER against Es/N0 for data word lengths 6 to 12 bits and floating point, one panel per waveform, LEO-Ka. 8 to 12 bits lie on the floating-point curve for OTFS-Zak; AFDM and OTFS-ISFFT need 10 bits."></div>
+    <figcaption><b>Figure 6.</b> End-to-end BER with fixed-point transforms (LEO-Ka, 16-bit ROMs). Darker is wider; the 8–12-bit curves sit on the floating-point curve except where noted in the table.</figcaption>
+  </figure>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Regime</th><th>Carrier</th><th>Max per-path Doppler</th><th>α max</th><th>2N·c₁</th><th>Doppler-rate phase in one frame</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>V2X</td><td class="num">5.9 GHz</td><td class="num">2,733 Hz</td><td class="num">1</td><td class="num">5</td><td class="num">2.1 × 10⁻³ rad</td></tr>
+        <tr><td>LEO-S</td><td class="num">2 GHz</td><td class="num">927 Hz + 6 Hz drift</td><td class="num">1</td><td class="num">5</td><td class="num">1.6 × 10⁻⁵ rad</td></tr>
+        <tr><td>LEO-Ka</td><td class="num">20 GHz</td><td class="num">9,266 Hz + 57 Hz drift</td><td class="num">2</td><td class="num">7</td><td class="num">1.6 × 10⁻⁴ rad</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="two">
+    <div>
+      <h3>What is solid</h3>
+      <ul class="plain">
+        <li><b>Models verified:</b> unitary transforms, Zak ≡ ISFFT form, AFDM tap positions match theory, prefix formula checked, channel matrix equals the sample-wise channel.</li>
+        <li><b>Hardware code is exact:</b> 0 mismatches over 30,720 samples per configuration; a mismatched build fails as it should.</li>
+        <li><b>Quantization behaves as theory says:</b> about 6 dB of SQNR per bit, no saturation with 3 integer bits.</li>
+        <li><b>Doppler numbers match 3GPP ranges:</b> 45.4 kHz at S-band and 454 kHz at Ka-band for a 10° pass (3GPP quotes ±48 / ±480 kHz).</li>
+        <li><b>Fair comparisons:</b> every configuration sees the same random channels and noise, so differences are paired, not luck.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>What a reviewer will attack</h3>
+      <ul class="plain">
+        <li><b>V2X profile is a placeholder.</b><span class="fix">Replace with a published model (Acosta-Marum, or 3GPP TR 37.885).</span></li>
+        <li><b>High-SNR points rest on 1–15 errors.</b><span class="fix">Run 10,000+ frames at 18–24 dB and report confidence intervals.</span></li>
+        <li><b>Perfect CSI and integer delays.</b><span class="fix">Add pilot-based estimation, or at least the fractional-delay channel; arXiv:2602.08163 shows integer-delay models can hide an error floor.</span></li>
+        <li><b>Is the AFDM penalty our truncation rule?</b><span class="fix">Compare with AFDM's own banded tap selection (P · (2ξ + 1) taps), sweep ξ, and add an MMSE/LDL baseline.</span></li>
+        <li><b>Low diversity at this numerology.</b><span class="fix">V2X Doppler is only 0.36 of a bin; sweep N and bandwidth so the regimes separate more.</span></li>
+        <li><b>Assumed LEO delay spread and update interval; QPSK only, uncoded.</b><span class="fix">Take values from TR 38.811 and sweep them; add 16-QAM.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
