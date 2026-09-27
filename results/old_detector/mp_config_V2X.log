@@ -1,0 +1,5 @@
+[Warning: V2X tap profile is a placeholder.] 
+[> In tdl_profile (line 40)
+In sys_params (line 96)
+In mp_config_study (line 9)] 
+EXIT stopped (paused queue; rerun with corrected detector)

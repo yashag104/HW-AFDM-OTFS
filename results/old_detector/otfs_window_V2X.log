@@ -1,0 +1,11 @@
+[Warning: V2X tap profile is a placeholder.] 
+[> In tdl_profile (line 40)
+In sys_params (line 96)
+In study_otfs_window (line 13)] 
+V2X     OTFS-Zak  none   mp-top  BER 2.0e-01 1.3e-01 5.1e-02 1.6e-02 5.1e-03 6.9e-04 5.5e-04 
+V2X     OTFS-Zak  none   lmmse   BER 2.0e-01 1.2e-01 4.9e-02 1.6e-02 4.3e-03 4.0e-04 9.4e-05 
+V2X     OTFS-PS   tukey  mp-top  BER 2.3e-01 1.7e-01 8.8e-02 4.2e-02 2.1e-02 6.6e-03 5.2e-03 
+V2X     OTFS-PS   tukey  lmmse   BER 2.3e-01 1.6e-01 9.5e-02 5.3e-02 2.3e-02 4.4e-03 1.6e-03 
+V2X     OTFS-PS   sine   mp-top  BER 2.8e-01 2.3e-01 1.7e-01 1.3e-01 1.0e-01 7.8e-02 7.4e-02 
+V2X     OTFS-PS   sine   lmmse   BER 2.6e-01 2.0e-01 1.3e-01 8.4e-02 4.6e-02 1.4e-02 5.3e-03 
+EXIT 0

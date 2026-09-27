@@ -7,7 +7,7 @@ setup_paths;
 
 p       = sys_params('LEO-Ka');
 p.Q     = 16;                       % 16-QAM: the more demanding input
-names   = {'AFDM', 'OTFS-Zak', 'OTFS-ISFFT'};
+names   = {'AFDM', 'OTFS-Zak', 'OTFS-ISFFT', 'OTFS-PS', 'OFDM'};
 Wdata   = 8:2:22;                   % data word lengths swept [bits]
 Wrom    = 18;                       % twiddle / chirp ROM width while sweeping data
 nFrames = 40;                       % frames averaged per point

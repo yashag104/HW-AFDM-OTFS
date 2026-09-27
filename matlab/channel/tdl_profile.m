@@ -35,7 +35,11 @@ switch name
         % PLACEHOLDER - NOT a verified model. Replace with a published V2X
         % profile (e.g. Acosta-Marum & Ingram VTV-Expressway-Oncoming, or the
         % 3GPP TR 37.885 highway model) before producing any paper results.
-        warning('tdl_profile:unverified', 'V2X tap profile is a placeholder.');
+        persistent warned
+        if isempty(warned)
+            warning('tdl_profile:unverified', 'V2X tap profile is a placeholder.');
+            warned = true;
+        end
         tbl = [0       0        1
                0      -10       0
                100e-9 -3        0

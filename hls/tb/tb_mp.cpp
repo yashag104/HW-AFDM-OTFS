@@ -20,18 +20,22 @@ int main(int argc, char **argv) {
     static idx_t col[N][S];
     static ctap  h[N][S];
     static int   tx[N], xf[N];
+    static var_t drop[N];
+    static ap_uint<1> isd[N];
     sym_t xhat[N];
     ap_uint<8> iters;
 
-    long errFix = 0, errFlt = 0, agree = 0, bits = 0, itSum = 0;
+    long errFix = 0, errFlt = 0, agree = 0, bits = 0, itSum = 0, dataSyms = 0;
     int frames = 0;
     double n0;
     while (std::fscanf(f, "%lf", &n0) == 1) {
         bool ok = true;
         for (int a = 0; a < N && ok; a++) {
-            double yr, yi;
-            ok = std::fscanf(f, "%lf %lf %d %d", &yr, &yi, &tx[a], &xf[a]) == 4;
+            double yr, yi, dr;
+            int d;
+            ok = std::fscanf(f, "%lf %lf %d %d %lf %d", &yr, &yi, &tx[a], &xf[a], &dr, &d) == 6;
             y[a].re = yr;  y[a].im = yi;
+            drop[a] = dr;  isd[a] = d;
             for (int s = 0; s < S && ok; s++) {
                 int c; double hr, hi;
                 ok = std::fscanf(f, "%d %lf %lf", &c, &hr, &hi) == 3;
@@ -40,14 +44,18 @@ int main(int argc, char **argv) {
         }
         if (!ok) { std::printf("file ended inside a frame (is MP_S = %d right?)\n", S); return 2; }
 
-        mp_detect(y, col, h, var_t(n0), xhat, iters);
+        mp_detect(y, col, h, var_t(n0), drop, isd, xhat, iters);
 
+        int nd = 0;
         for (int a = 0; a < N; a++) {
+            if (!isd[a]) continue;                   // known pilot / guard position
             errFix += bit_errors(tx[a], xhat[a].to_int());
             errFlt += bit_errors(tx[a], xf[a]);
             agree  += (xhat[a].to_int() == xf[a]);
+            nd++;
         }
-        bits  += 2 * N;
+        bits  += 2 * nd;
+        dataSyms += nd;
         itSum += iters.to_int();
         frames++;
     }
@@ -58,9 +66,11 @@ int main(int argc, char **argv) {
     std::printf("S = %d, frames = %d, bits = %ld\n", S, frames, bits);
     std::printf("  BER fixed-point MP : %.3e (%ld errors)\n", berFix, errFix);
     std::printf("  BER float MP (ref) : %.3e (%ld errors)\n", berFlt, errFlt);
-    std::printf("  decision agreement : %.4f\n", double(agree) / (frames * N));
+    std::printf("  decision agreement : %.4f\n", double(agree) / dataSyms);
     std::printf("  mean iterations    : %.2f (max %d)\n", double(itSum) / frames, ITER);
     const bool pass = berFix <= ratio * berFlt + 1e-4;
+    std::printf("RESULT S=%d frames=%d errFix=%ld errFlt=%ld bits=%ld agree=%.5f iters=%.2f\n",
+                S, frames, errFix, errFlt, bits, double(agree) / dataSyms, double(itSum) / frames);
     std::printf(pass ? "PASS\n" : "FAIL: fixed-point loss too large\n");
     return pass ? 0 : 1;
 }

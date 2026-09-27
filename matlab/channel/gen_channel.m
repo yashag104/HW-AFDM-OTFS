@@ -3,7 +3,7 @@ function ch = gen_channel(p)
 %   p  : parameters from sys_params
 %   ch : struct with one row per path
 %          h    - complex gain (total power normalized to 1)
-%          l    - integer delay [samples]
+%          tau  - delay [samples], fractional if p.fracDelay, else rounded
 %          nu   - Doppler shift at frame start [Hz]
 %          beta - Doppler rate [Hz/s]
 %
@@ -23,9 +23,11 @@ ray  = (randn(P, 1) + 1j * randn(P, 1)) / sqrt(2);
 ch.h = sqrt(pw) .* ray;
 ch.h(prof.isLOS) = sqrt(pw(prof.isLOS)) .* exp(1j * phi(prof.isLOS));
 
-% Integer delays on the sample grid.
-ch.l = round(prof.delay * p.DS / p.Ts);
-assert(max(ch.l) <= p.Ncp, 'gen_channel: delay spread exceeds the prefix.');
+% Delays.
+ch.tau = prof.delay * p.DS / p.Ts;
+if ~p.fracDelay
+    ch.tau = round(ch.tau);
+end
 
 % Doppler shift and Doppler rate.
 nu_common = p.nu_common_max * (2 * rand - 1);

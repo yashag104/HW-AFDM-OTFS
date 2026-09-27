@@ -1,0 +1,22 @@
+AFDM       W=6    BER 1.8e-01 8.7e-02 3.2e-02 1.1e-02 6.1e-03 4.5e-03 4.6e-03  | satRx 3.9e-05 satTx 0.0e+00
+AFDM       W=8    BER 1.7e-01 7.1e-02 1.5e-02 1.5e-03 1.1e-04 2.3e-05 1.2e-05  | satRx 2.0e-05 satTx 0.0e+00
+AFDM       W=10   BER 1.7e-01 7.2e-02 1.4e-02 1.2e-03 6.8e-05 2.0e-05 1.2e-05  | satRx 2.0e-05 satTx 0.0e+00
+AFDM       W=12   BER 1.8e-01 7.3e-02 1.5e-02 1.3e-03 6.5e-05 2.0e-05 1.2e-05  | satRx 2.0e-05 satTx 0.0e+00
+AFDM       float  BER 1.8e-01 7.3e-02 1.5e-02 1.3e-03 6.8e-05 1.9e-05 9.8e-06  | satRx 2.0e-04 satTx 0.0e+00
+OTFS-Zak   W=6    BER 1.7e-01 7.0e-02 1.5e-02 1.3e-03 7.8e-05 1.3e-05 6.8e-06  | satRx 3.9e-06 satTx 0.0e+00
+OTFS-Zak   W=8    BER 1.7e-01 6.7e-02 1.2e-02 6.0e-04 1.8e-05 0.0e+00 9.8e-07  | satRx 2.0e-06 satTx 0.0e+00
+OTFS-Zak   W=10   BER 1.7e-01 6.8e-02 1.3e-02 5.6e-04 1.3e-05 9.8e-07 0.0e+00  | satRx 2.0e-06 satTx 0.0e+00
+OTFS-Zak   W=12   BER 1.7e-01 6.9e-02 1.3e-02 5.8e-04 1.6e-05 9.8e-07 0.0e+00  | satRx 2.0e-06 satTx 0.0e+00
+OTFS-Zak   float  BER 1.7e-01 6.9e-02 1.3e-02 6.1e-04 1.6e-05 9.8e-07 0.0e+00  | satRx 2.0e-04 satTx 0.0e+00
+OTFS-ISFFT W=6    BER 1.8e-01 8.6e-02 3.3e-02 1.4e-02 1.1e-02 9.5e-03 9.6e-03  | satRx 0.0e+00 satTx 0.0e+00
+OTFS-ISFFT W=8    BER 1.7e-01 6.8e-02 1.3e-02 9.7e-04 6.0e-05 3.5e-05 2.9e-05  | satRx 2.0e-06 satTx 0.0e+00
+OTFS-ISFFT W=10   BER 1.7e-01 6.9e-02 1.3e-02 6.4e-04 1.3e-05 9.8e-07 0.0e+00  | satRx 2.0e-06 satTx 0.0e+00
+OTFS-ISFFT W=12   BER 1.7e-01 7.0e-02 1.3e-02 6.1e-04 1.5e-05 9.8e-07 0.0e+00  | satRx 2.0e-06 satTx 0.0e+00
+OTFS-ISFFT float  BER 1.7e-01 6.9e-02 1.3e-02 6.1e-04 1.6e-05 9.8e-07 0.0e+00  | satRx 2.0e-04 satTx 0.0e+00
+OTFS-PS    W=6    BER 2.6e-01 2.0e-01 1.4e-01 9.9e-02 7.6e-02 7.4e-02 5.7e-02  | satRx 5.9e-05 satTx 3.9e-05
+OTFS-PS    W=8    BER 2.6e-01 1.9e-01 1.1e-01 5.8e-02 3.1e-02 3.3e-02 1.8e-02  | satRx 3.9e-05 satTx 2.0e-05
+OTFS-PS    W=10   BER 2.6e-01 2.0e-01 1.1e-01 5.6e-02 3.1e-02 3.1e-02 1.9e-02  | satRx 7.8e-05 satTx 2.0e-05
+OTFS-PS    W=12   BER 2.6e-01 2.0e-01 1.1e-01 5.8e-02 3.1e-02 3.2e-02 1.9e-02  | satRx 7.8e-05 satTx 0.0e+00
+OTFS-PS    float  BER 2.6e-01 2.0e-01 1.1e-01 5.8e-02 3.1e-02 3.1e-02 1.9e-02  | satRx 9.8e-04 satTx 2.0e-05
+OFDM       W=6    BER 1.8e-01 8.1e-02 2.5e-02 6.4e-03 3.3e-03 2.6e-03 2.5e-03  | satRx 2.0e-05 satTx 0.0e+00
+EXIT stopped (rerun with corrected detector)

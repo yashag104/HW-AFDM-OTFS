@@ -1,0 +1,10 @@
+LEO-Ka  AFDM      genie mp-top  data 0.76 BER 1.8e-01 7.3e-02 1.4e-02 9.3e-04 6.8e-05 4.8e-05 1.0e-03 
+LEO-Ka  AFDM      est   mp-top  data 0.76 BER 1.9e-01 8.7e-02 2.1e-02 2.7e-03 2.4e-04 1.7e-04 2.3e-03 
+LEO-Ka  AFDM      est   lmmse   data 0.76 BER 1.8e-01 8.3e-02 1.7e-02 1.5e-03 8.3e-05 2.3e-05 2.5e-05 
+LEO-Ka  OTFS-Zak  genie mp-top  data 0.56 BER 1.7e-01 6.8e-02 1.1e-02 4.5e-04 1.2e-05 0.0e+00 0.0e+00 
+LEO-Ka  OTFS-Zak  est   mp-top  data 0.56 BER 1.8e-01 8.2e-02 1.9e-02 1.9e-03 2.7e-04 2.6e-04 2.3e-04 
+LEO-Ka  OTFS-Zak  est   lmmse   data 0.56 BER 1.8e-01 8.0e-02 1.7e-02 1.4e-03 2.1e-04 1.7e-04 1.2e-04 
+LEO-Ka  OTFS-PS   genie mp-top  data 0.56 BER 2.5e-01 1.8e-01 9.3e-02 3.3e-02 1.3e-02 7.0e-03 6.4e-03 
+LEO-Ka  OTFS-PS   est   mp-top  data 0.56 BER 2.5e-01 1.8e-01 1.0e-01 4.3e-02 2.3e-02 1.5e-02 1.7e-02 
+LEO-Ka  OTFS-PS   est   lmmse   data 0.56 BER 2.4e-01 1.7e-01 1.0e-01 5.7e-02 2.4e-02 9.3e-03 4.0e-03 
+EXIT 0

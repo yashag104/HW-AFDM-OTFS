@@ -1,10 +1,12 @@
-function [xhat, itersUsed] = mp_detector(y, idx, val, N0, const, mp)
+function [xhat, itersUsed] = mp_detector(y, idx, val, N0, const, mp, isData)
 % MP_DETECTOR  Message-passing detector on a sparse effective channel
 %              (Raviteja et al., IEEE TWC 2018). Same algorithm for AFDM and OTFS.
 %   y     : N x 1 received samples in the detection domain
 %   idx   : N x S column index of the taps kept in each row (from sparsify_rows)
 %   val   : N x S tap values
-%   N0    : noise variance per complex sample
+%   N0    : noise variance per complex sample: a scalar, or N x 1 per row
+%           (noise plus the energy of the taps sparsify dropped from that
+%           row, so the detector accounts for the truncation interference)
 %   const : Q x 1 constellation
 %   mp    : detector settings
 %             iter  - maximum number of iterations (bounds the latency)
@@ -12,6 +14,10 @@ function [xhat, itersUsed] = mp_detector(y, idx, val, N0, const, mp)
 %             stop  - true: convergence rule below; false: always run iter
 %             gamma - a symbol counts as converged when max P >= 1 - gamma
 %             eps   - stop when eta drops more than eps below its best value
+%   isData: optional N x 1 logical, true for unknown data symbols. Pilot and
+%           guard positions are known, so they are left out of the
+%           convergence indicator (otherwise eta can never reach 1).
+%           Default: all true.
 %   xhat      : N x 1 detected symbol indices, 1..Q (from the best iteration)
 %   itersUsed : iterations actually run
 %
@@ -24,6 +30,7 @@ function [xhat, itersUsed] = mp_detector(y, idx, val, N0, const, mp)
 
 [N, S] = size(idx);
 Q      = numel(const);
+if nargin < 7, isData = true(N, 1); end
 nE     = N * S;
 
 ea = repmat((1:N).', S, 1);             % observation (row) of each edge
@@ -34,6 +41,7 @@ ye = y(ea);                             % observation value on each edge
 P   = ones(nE, Q) / Q;                  % variable -> observation messages
 c   = const(:).';                       % 1 x Q
 eh2 = abs(eh).^2;
+if isscalar(N0), n0e = N0; else, n0e = N0(ea); end   % noise floor of each edge
 
 etaBest = -1;
 xhat    = ones(N, 1);
@@ -45,7 +53,7 @@ for it = 1:mp.iter
     mu_a  = accumarray(ea, eh .* m1, [N 1]);      % sum over the row
     var_a = accumarray(ea, eh2 .* vx, [N 1]) + N0;
     mu_e  = mu_a(ea) - eh .* m1;                  % remove the own contribution
-    var_e = max(var_a(ea) - eh2 .* vx, N0);
+    var_e = max(var_a(ea) - eh2 .* vx, n0e);
 
     % --- log-likelihood of every symbol on every edge ---
     LL = -abs(ye - mu_e - eh .* c).^2 ./ var_e;   % nE x Q
@@ -64,7 +72,7 @@ for it = 1:mp.iter
     Pb        = exp(Ltot - max(Ltot, [], 2));
     Pb        = Pb ./ sum(Pb, 2);
     [pmax, d] = max(Pb, [], 2);
-    eta       = mean(pmax >= 1 - mp.gamma);
+    eta       = mean(pmax(isData) >= 1 - mp.gamma);
     if eta > etaBest
         etaBest = eta;
         xhat    = d;

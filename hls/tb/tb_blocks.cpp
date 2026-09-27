@@ -33,7 +33,7 @@ static int check_block(const std::string &dir, const char *name, block_fn fn) {
         frames++;
     }
     std::fclose(f);
-    std::printf("  %-16s %3d frames, %6d samples, %d mismatches\n", name, frames, frames * N, bad);
+    std::printf("  %-18s %3d frames, %6d samples, %d mismatches\n", name, frames, frames * N, bad);
     return (frames == 0) ? 1 : bad;
 }
 
@@ -43,12 +43,17 @@ int main(int argc, char **argv) {
     std::printf("WD = %d, WR = %d, vectors: %s\n", WD, WR, dir.c_str());
 
     int errors = 0;
-    errors += check_block(dir, "afdm_mod",        afdm_mod);
-    errors += check_block(dir, "afdm_demod",      afdm_demod);
-    errors += check_block(dir, "otfs_zak_mod",    otfs_zak_mod);
-    errors += check_block(dir, "otfs_zak_demod",  otfs_zak_demod);
-    errors += check_block(dir, "otfs_isfft_mod",  otfs_isfft_mod);
-    errors += check_block(dir, "otfs_sfft_demod", otfs_sfft_demod);
+    errors += check_block(dir, "afdm_mod",          afdm_mod);
+    errors += check_block(dir, "afdm_demod",        afdm_demod);
+    errors += check_block(dir, "afdm_mod_c2zero",   afdm_mod_c2zero);
+    errors += check_block(dir, "afdm_demod_c2zero", afdm_demod_c2zero);
+    errors += check_block(dir, "otfs_zak_mod",      otfs_zak_mod);
+    errors += check_block(dir, "otfs_zak_demod",    otfs_zak_demod);
+    errors += check_block(dir, "otfs_isfft_mod",    otfs_isfft_mod);
+    errors += check_block(dir, "otfs_sfft_demod",   otfs_sfft_demod);
+    errors += check_block(dir, "otfs_ps_mod",       otfs_ps_mod);
+    errors += check_block(dir, "ofdm_mod",          ofdm_mod);
+    errors += check_block(dir, "ofdm_demod",        ofdm_demod);
 
     std::printf(errors == 0 ? "PASS: bit-exact with MATLAB\n" : "FAIL\n");
     return errors == 0 ? 0 : 1;

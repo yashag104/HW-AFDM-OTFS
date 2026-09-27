@@ -12,7 +12,7 @@ static const tap_t CONST_POW[Q] = {1.0, 1.0, 1.0, 1.0};   // |c|^2 of the unit-e
 // Settings shared with matlab/config/sys_params.m (p.mp)
 static const prob_t DAMP     = 0.7;                   // damping
 static const esum_t CONV_SUM = 1.0 / (1.0 - 0.01);    // converged if sum of exp <= 1/(1-gamma)
-static const int    EPS_CNT  = (int)(0.2 * N);        // stop if count drops by eps*N
+static const int    EPS_TENTHS = 2;                   // eps = 0.2: stop if count drops by eps * (data symbols)
 
 // exp(d) for d <= 0, from the table at step 1/8 (index = floor(-8 d)).
 static prob_t exp_lut(lsum_t d) {
@@ -22,6 +22,7 @@ static prob_t exp_lut(lsum_t d) {
 }
 
 void mp_detect(const cdata y[N], const idx_t col[N][S], const ctap h[N][S], var_t n0,
+               const var_t drop[N], const ap_uint<1> is_data[N],
                sym_t xhat[N], ap_uint<8> &iters) {
     static prob_t P[N][S][Q];     // variable -> observation messages, per edge
     static ll_t   LL[N][S][Q];    // observation -> variable log-likelihoods, per edge
@@ -31,6 +32,12 @@ init:
     for (int a = 0; a < N; a++)
         for (int s = 0; s < S; s++)
             for (int q = 0; q < Q; q++) P[a][s][q] = prob_t(1.0 / Q);
+
+    // Convergence is counted over the unknown (data) symbols only.
+    int ndata = 0;
+count_data:
+    for (int b = 0; b < N; b++) ndata += is_data[b].to_int();
+    const int eps_cnt = (EPS_TENTHS * ndata) / 10;
 
     int best = -1;
     int it   = 0;
@@ -42,7 +49,8 @@ iterations:
             mean_t m1re[S], m1im[S];
             var_t  vx[S];
             mean_t mure = 0, muim = 0;
-            var_t  var  = n0;
+            const var_t n0r = n0 + drop[a];   // noise + interference of the dropped taps
+            var_t  var  = n0r;
             for (int s = 0; s < S; s++) {
                 mean_t er = 0, ei = 0;
                 var_t  e2 = 0;
@@ -63,7 +71,7 @@ iterations:
                 mean_t ure = mure - (hr * m1re[s] - hi * m1im[s]);
                 mean_t uim = muim - (hr * m1im[s] + hi * m1re[s]);
                 var_t  ve  = var - (hr * hr + hi * hi) * vx[s];
-                if (ve < n0) ve = n0;
+                if (ve < n0r) ve = n0r;
                 inv_t  iv  = inv_t(1) / ve;
                 for (int q = 0; q < Q; q++) {
                     mean_t dr = y[a].re - ure - (hr * CONST[q].re - hi * CONST[q].im);
@@ -110,7 +118,7 @@ iterations:
             for (int q = 1; q < Q; q++) if (Lt[b][q] > mx) { mx = Lt[b][q]; arg = q; }
             esum_t sum = 0;
             for (int q = 0; q < Q; q++) sum += exp_lut(Lt[b][q] - mx);
-            if (sum <= CONV_SUM) count++;             // max probability = 1 / sum >= 1 - gamma
+            if (is_data[b] && sum <= CONV_SUM) count++;   // max probability = 1 / sum >= 1 - gamma
             dec[b] = arg;
         }
         if (count > best) {
@@ -118,7 +126,7 @@ iterations:
         keep:
             for (int b = 0; b < N; b++) xhat[b] = dec[b];
         }
-        if (count == N || count < best - EPS_CNT) break;
+        if (count == ndata || count < best - eps_cnt) break;
     }
     iters = (it > ITER) ? ITER : it;
 }

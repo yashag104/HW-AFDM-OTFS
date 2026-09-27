@@ -1,0 +1,8 @@
+[Warning: V2X tap profile is a placeholder.] 
+[> In tdl_profile (line 40)
+In sys_params (line 96)
+In study_taps (line 8)] 
+V2X     AFDM      top S=[4 8 16 32]: 3.0e-02 7.6e-03 1.4e-03 9.8e-04  | path w=[1 3 5]: 2.2e-02 1.6e-03 9.0e-04 
+V2X     OTFS-Zak  top S=[4 8 16 32]: 3.1e-02 8.7e-03 2.3e-03 8.3e-04  | path w=[1 3 5]: 2.3e-02 2.4e-03 6.7e-04 
+V2X     OTFS-PS   top S=[4 8 16 32]: 9.1e-02 8.7e-02 1.0e-01 9.6e-02  | path w=[1 3 5]: 7.3e-02 1.1e-01 9.7e-02 
+EXIT 0

@@ -40,6 +40,40 @@ post_chirp:
     for (int n = 0; n < N; n++) y[n] = chirp_mul(buf[n], CHIRP2[n], false);
 }
 
+// AFDM with c2 = 0: the c2 chirp is exactly 1, so its pass is dropped
+// (bit-identical to afdm_mod / afdm_demod run with c2 = 0).
+void afdm_mod_c2zero(const cdata x[N], cdata s[N]) {
+    cdata buf[N];
+    for (int n = 0; n < N; n++) buf[n] = x[n];
+    fft<N, 8>(buf, TW256_INV);
+post_chirp:
+    for (int n = 0; n < N; n++) s[n] = chirp_mul(buf[n], CHIRP1[n], true);
+}
+
+void afdm_demod_c2zero(const cdata r[N], cdata y[N]) {
+    cdata buf[N];
+pre_chirp:
+    for (int n = 0; n < N; n++) buf[n] = chirp_mul(r[n], CHIRP1[n], false);
+    fft<N, 8>(buf, TW256_FWD);
+    for (int n = 0; n < N; n++) y[n] = buf[n];
+}
+
+// ---------------------------------------------------------------- OFDM baseline
+
+void ofdm_mod(const cdata x[N], cdata s[N]) {
+    cdata buf[N];
+    for (int n = 0; n < N; n++) buf[n] = x[n];
+    fft<N, 8>(buf, TW256_INV);
+    for (int n = 0; n < N; n++) s[n] = buf[n];
+}
+
+void ofdm_demod(const cdata r[N], cdata y[N]) {
+    cdata buf[N];
+    for (int n = 0; n < N; n++) buf[n] = r[n];
+    fft<N, 8>(buf, TW256_FWD);
+    for (int n = 0; n < N; n++) y[n] = buf[n];
+}
+
 // ---------------------------------------------------------------- OTFS helpers
 
 // K-point FFT along every delay row l: elements l + M*k, k = 0..K-1.
@@ -87,6 +121,23 @@ void otfs_isfft_mod(const cdata x[N], cdata s[N]) {
     for (int i = 0; i < N; i++) g[i] = x[i];
     cols_fft(g, TW16_FWD);                 // ISFFT: F_M * X
     rows_fft(g, TW16_INV);                 //        ... * F_K^H
+    cols_fft(g, TW16_INV);                 // Heisenberg: F_M^H * X_TF
+    for (int i = 0; i < N; i++) s[i] = g[i];
+}
+
+// Pulse-shaped OTFS: the TF window sits between ISFFT and Heisenberg, so the
+// three passes cannot collapse into the Zak form. Receiver: otfs_sfft_demod.
+void otfs_ps_mod(const cdata x[N], cdata s[N]) {
+    cdata g[N];
+    for (int i = 0; i < N; i++) g[i] = x[i];
+    cols_fft(g, TW16_FWD);                 // ISFFT: F_M * X
+    rows_fft(g, TW16_INV);                 //        ... * F_K^H
+window:
+    for (int i = 0; i < N; i++) {          // real window, one sample at a time
+        acc_t re = g[i].re * WINDOW[i];
+        acc_t im = g[i].im * WINDOW[i];
+        g[i].re = re;  g[i].im = im;
+    }
     cols_fft(g, TW16_INV);                 // Heisenberg: F_M^H * X_TF
     for (int i = 0; i < N; i++) s[i] = g[i];
 }

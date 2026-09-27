@@ -13,7 +13,7 @@ set wd   $::env(WD)
 set wr   $::env(WR)
 set scen $::env(SCEN)
 
-set part   xc7z020clg400-1        ;# Zynq-7020 (PYNQ-Z2)
+set part   xc7z020clg484-1        ;# Zynq-7020 (ZedBoard); same die as PYNQ-Z2
 set period 10.0                   ;# 100 MHz target clock [ns]
 
 set root [file normalize [file dirname [info script]]/..]

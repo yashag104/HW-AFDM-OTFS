@@ -1,0 +1,7 @@
+LEO-Ka  OTFS-Zak  none   mp-top  BER 1.7e-01 7.1e-02 1.1e-02 6.4e-04 8.5e-06 6.5e-07 6.5e-07 
+LEO-Ka  OTFS-Zak  none   lmmse   BER 1.7e-01 7.0e-02 1.1e-02 6.1e-04 9.8e-06 0.0e+00 0.0e+00 
+LEO-Ka  OTFS-PS   tukey  mp-top  BER 2.1e-01 1.2e-01 4.6e-02 7.0e-03 9.6e-04 4.1e-04 5.2e-04 
+LEO-Ka  OTFS-PS   tukey  lmmse   BER 2.0e-01 1.2e-01 6.3e-02 2.6e-02 6.2e-03 9.4e-04 1.3e-05 
+LEO-Ka  OTFS-PS   sine   mp-top  BER 2.6e-01 1.9e-01 1.1e-01 4.5e-02 3.0e-02 2.4e-02 2.9e-02 
+LEO-Ka  OTFS-PS   sine   lmmse   BER 2.4e-01 1.7e-01 1.1e-01 5.5e-02 2.0e-02 5.0e-03 4.2e-04 
+EXIT 0

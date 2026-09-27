@@ -1,0 +1,14 @@
+[Warning: V2X tap profile is a placeholder.] 
+[> In tdl_profile (line 40)
+In sys_params (line 96)
+In study_estimation (line 9)] 
+V2X     AFDM      genie mp-top  data 0.83 BER 2.0e-01 1.2e-01 5.0e-02 1.6e-02 2.4e-03 6.3e-04 2.2e-03 
+V2X     AFDM      est   mp-top  data 0.83 BER 2.3e-01 1.5e-01 7.4e-02 3.1e-02 9.4e-03 3.4e-03 2.9e-03 
+V2X     AFDM      est   lmmse   data 0.83 BER 2.3e-01 1.4e-01 7.1e-02 2.8e-02 8.9e-03 2.4e-03 1.7e-03 
+V2X     OTFS-Zak  genie mp-top  data 0.56 BER 2.0e-01 1.2e-01 4.8e-02 1.3e-02 2.6e-03 9.1e-04 2.1e-04 
+V2X     OTFS-Zak  est   mp-top  data 0.56 BER 2.2e-01 1.4e-01 6.3e-02 2.0e-02 5.1e-03 1.5e-03 4.4e-04 
+V2X     OTFS-Zak  est   lmmse   data 0.56 BER 2.2e-01 1.4e-01 6.2e-02 2.1e-02 5.6e-03 1.4e-03 3.2e-04 
+V2X     OTFS-PS   genie mp-top  data 0.56 BER 2.6e-01 2.1e-01 1.4e-01 8.5e-02 4.4e-02 2.5e-02 1.4e-02 
+V2X     OTFS-PS   est   mp-top  data 0.56 BER 2.8e-01 2.2e-01 1.5e-01 1.0e-01 6.3e-02 3.7e-02 2.9e-02 
+V2X     OTFS-PS   est   lmmse   data 0.56 BER 2.7e-01 2.1e-01 1.4e-01 8.4e-02 4.9e-02 2.3e-02 1.2e-02 
+EXIT 0

@@ -1,0 +1,12 @@
+LEO-Ka  AFDM      both fixes, pilots 0  BER 5.3e-05 5.2e-06 2.6e-06  (errs [82 8 4]) iters 3.3 2.6 2.4 
+LEO-Ka  AFDM      both fixes, pilots 1  BER 4.9e-05 1.2e-05 3.8e-05  (errs [57 14 45]) iters 3.1 2.5 2.5 
+LEO-Ka  OTFS-Zak  both fixes, pilots 0  BER 3.9e-05 0.0e+00 0.0e+00  (errs [60 0 0]) iters 2.7 2.3 2.2 
+LEO-Ka  OTFS-Zak  both fixes, pilots 1  BER 3.4e-05 0.0e+00 0.0e+00  (errs [29 0 0]) iters 2.5 2.2 2.1 
+[Warning: V2X tap profile is a placeholder.] 
+[> In tdl_profile (line 40)
+In sys_params (line 96)] 
+V2X     AFDM      both fixes, pilots 0  BER 3.4e-03 3.0e-04 1.8e-04  (errs [525 100 101]) iters 6.0 4.2 3.9 
+V2X     AFDM      both fixes, pilots 1  BER 3.3e-03 6.0e-04 5.9e-04  (errs [421 102 106]) iters 5.8 4.2 4.0 
+V2X     OTFS-Zak  both fixes, pilots 0  BER 3.7e-03 4.6e-04 2.1e-04  (errs [569 100 100]) iters 6.0 4.3 4.0 
+V2X     OTFS-Zak  both fixes, pilots 1  BER 3.1e-03 4.0e-04 1.5e-04  (errs [265 117 108]) iters 5.5 3.9 3.5 
+EXIT 0

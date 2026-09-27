@@ -15,9 +15,11 @@
 
 typedef ap_fixed<WD, 3, AP_RND, AP_SAT> data_t;
 typedef ap_fixed<WR, 2, AP_RND, AP_SAT> rom_t;
+typedef ap_fixed<WR, 3, AP_RND, AP_SAT> win_t;   // OTFS-PS window (peak 2, see otfs_window.m)
 
 // Exact intermediate: holds (data +/- data*rom +/- data*rom) / 2 without rounding.
 // Fraction bits: (WD-3) + (WR-2) + 1 = WD+WR-4; integer bits: 3+2+1 (sum) +1 +1 (margin) = 8.
+// Also exact for data * win_t: fraction (WD-3) + (WR-3), integer 3 + 3 = 6.
 typedef ap_fixed<WD + WR + 4, 8> acc_t;
 
 struct cdata { data_t re, im; };

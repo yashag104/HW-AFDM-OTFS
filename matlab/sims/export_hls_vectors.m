@@ -32,15 +32,25 @@ write_table(f, 'TW16_FWD',  fx(exp(-1j * 2 * pi * k16 / 16), fxc.tw));
 write_table(f, 'TW16_INV',  fx(exp(+1j * 2 * pi * k16 / 16), fxc.tw));
 write_table(f, 'CHIRP1', ch1);                 % exp(-j 2 pi c1 n^2), quantized
 write_table(f, 'CHIRP2', ch2);                 % exp(-j 2 pi c2 n^2), quantized
+W = otfs_window(p, fxc);                       % OTFS-PS window, column-major (l + M*k)
+fprintf(f, 'static const win_t WINDOW[%d] = {\n', numel(W));
+fprintf(f, '    %.17g,\n', W(:));
+fprintf(f, '};\n\n');
 fclose(f);
 
 % ---- Test vectors ----
-blocks = {'afdm_mod',       @(v) afdm_mod(v, p, fxc)
-          'afdm_demod',     @(v) afdm_demod(v, p, fxc)
-          'otfs_zak_mod',   @(v) otfs_mod_zak(v, p, fxc)
-          'otfs_zak_demod', @(v) otfs_demod_zak(v, p, fxc)
-          'otfs_isfft_mod', @(v) otfs_mod_isfft(v, p, fxc)
-          'otfs_sfft_demod',@(v) otfs_demod_sfft(v, p, fxc)};
+pz = p;  pz.c2 = 0;                            % AFDM variant without the c2 chirp
+blocks = {'afdm_mod',          @(v) afdm_mod(v, p, fxc)
+          'afdm_demod',        @(v) afdm_demod(v, p, fxc)
+          'afdm_mod_c2zero',   @(v) afdm_mod(v, pz, fxc)
+          'afdm_demod_c2zero', @(v) afdm_demod(v, pz, fxc)
+          'otfs_zak_mod',      @(v) otfs_mod_zak(v, p, fxc)
+          'otfs_zak_demod',    @(v) otfs_demod_zak(v, p, fxc)
+          'otfs_isfft_mod',    @(v) otfs_mod_isfft(v, p, fxc)
+          'otfs_sfft_demod',   @(v) otfs_demod_sfft(v, p, fxc)
+          'otfs_ps_mod',       @(v) otfs_mod_ps(v, p, fxc)
+          'ofdm_mod',          @(v) ofdm_mod(v, p, fxc)
+          'ofdm_demod',        @(v) ofdm_demod(v, p, fxc)};
 rng(7);
 for b = 1:size(blocks, 1)
     f = fopen(fullfile(vecDir, [blocks{b, 1} '.txt']), 'w');
