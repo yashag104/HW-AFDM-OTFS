@@ -20,3 +20,4 @@ vitis_sw/**/export/
 vitis_sw/.rigel_lopper*/
 vitis_sw/_ide/
 vitis_sw/**/logs/
+vitis_sw_amd/
