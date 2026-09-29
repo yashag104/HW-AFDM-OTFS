@@ -1,0 +1,293 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Tue Sep 29 13:43:42 2026
+# Process ID         : 30060
+# Current directory  : C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1
+# Command line       : vivado.exe -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
+# Log file           : C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/design_1_wrapper.vds
+# Journal file       : C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1\vivado.jou
+# Running On         : SaY-PC
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+# CPU Frequency      : 2496 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 16804 MB
+# Swap memory        : 13958 MB
+# Total Virtual      : 30763 MB
+# Available Virtual  : 8393 MB
+#-----------------------------------------------------------
+source design_1_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:18 ; elapsed = 00:00:10 . Memory (MB): peak = 531.230 ; gain = 219.473
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/2025.2/Vivado/data/ip'.
+Command: synth_design -top design_1_wrapper -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 6772
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1344.086 ; gain = 539.523
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_wrapper' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'design_1' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:13]
+INFO: [Synth 8-6157] synthesizing module 'design_1_afdm_mod_top_0_0' [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_afdm_mod_top_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_afdm_mod_top_0_0' (0#1) [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_afdm_mod_top_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'interrupt' of module 'design_1_afdm_mod_top_0_0' is unconnected for instance 'afdm_mod_top_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:210]
+WARNING: [Synth 8-7071] port 'm_axi_gmem_WID' of module 'design_1_afdm_mod_top_0_0' is unconnected for instance 'afdm_mod_top_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:210]
+WARNING: [Synth 8-7023] instance 'afdm_mod_top_0' of module 'design_1_afdm_mod_top_0_0' has 60 connections declared, but only 58 given [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:210]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:520]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_7HNO1D' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:834]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_imp_auto_pc_0' [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_axi_mem_intercon_imp_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_imp_auto_pc_0' (0#1) [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_axi_mem_intercon_imp_auto_pc_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_wid' of module 'design_1_axi_mem_intercon_imp_auto_pc_0' is unconnected for instance 'auto_pc' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:1100]
+WARNING: [Synth 8-7023] instance 'auto_pc' of module 'design_1_axi_mem_intercon_imp_auto_pc_0' has 79 connections declared, but only 78 given [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:1100]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_imp_auto_us_0' [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_axi_mem_intercon_imp_auto_us_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_imp_auto_us_0' (0#1) [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_axi_mem_intercon_imp_auto_us_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_7HNO1D' (0#1) [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:834]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_0' (0#1) [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:520]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_smc_0' [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_axi_smc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_smc_0' (0#1) [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_axi_smc_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'M00_AXI_awprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:348]
+WARNING: [Synth 8-7071] port 'M00_AXI_arprot' of module 'design_1_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:348]
+WARNING: [Synth 8-7023] instance 'axi_smc' of module 'design_1_axi_smc_0' has 59 connections declared, but only 57 given [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:348]
+INFO: [Synth 8-6157] synthesizing module 'design_1_processing_system7_0_0' [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_processing_system7_0_0' (0#1) [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_processing_system7_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'ENET0_MDIO_MDC' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'ENET0_MDIO_O' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'ENET0_MDIO_T' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'TTC0_WAVE0_OUT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'TTC0_WAVE1_OUT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'TTC0_WAVE2_OUT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'USB0_PORT_INDCTL' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'USB0_VBUS_PWRSELECT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_BID' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RID' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RCOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_WCOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RACOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_WACOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'design_1_processing_system7_0_0' has 118 connections declared, but only 104 given [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:406]
+INFO: [Synth 8-6157] synthesizing module 'design_1_rst_ps7_0_100M_0' [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_rst_ps7_0_100M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_ps7_0_100M_0' (0#1) [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/.Xil/Vivado-30060-SaY-PC/realtime/design_1_rst_ps7_0_100M_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:511]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:511]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:511]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:511]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'design_1_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:511]
+INFO: [Synth 8-6155] done synthesizing module 'design_1' (0#1) [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/synth/design_1.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_wrapper' (0#1) [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
+WARNING: [Synth 8-7129] Port M_ACLK in module s00_couplers_imp_7HNO1D is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_7HNO1D is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_arlock[1] in module s00_couplers_imp_7HNO1D is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_awlock[1] in module s00_couplers_imp_7HNO1D is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1473.488 ; gain = 668.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1473.488 ; gain = 668.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1473.488 ; gain = 668.926
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1473.488 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc] for cell 'design_1_i/processing_system7_0'
+Finished Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc] for cell 'design_1_i/processing_system7_0'
+Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_afdm_mod_top_0_0/design_1_afdm_mod_top_0_0/design_1_afdm_mod_top_0_0_in_context.xdc] for cell 'design_1_i/afdm_mod_top_0'
+Finished Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_afdm_mod_top_0_0/design_1_afdm_mod_top_0_0/design_1_afdm_mod_top_0_0_in_context.xdc] for cell 'design_1_i/afdm_mod_top_0'
+Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/design_1_axi_smc_0/design_1_axi_smc_0_in_context.xdc] for cell 'design_1_i/axi_smc'
+Finished Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_axi_smc_0/design_1_axi_smc_0/design_1_axi_smc_0_in_context.xdc] for cell 'design_1_i/axi_smc'
+Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_in_context.xdc] for cell 'design_1_i/rst_ps7_0_100M'
+Finished Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_in_context.xdc] for cell 'design_1_i/rst_ps7_0_100M'
+Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_axi_mem_intercon_imp_auto_pc_0/design_1_axi_mem_intercon_imp_auto_pc_0/design_1_axi_mem_intercon_imp_auto_pc_0_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s00_couplers/auto_pc'
+Finished Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_axi_mem_intercon_imp_auto_pc_0/design_1_axi_mem_intercon_imp_auto_pc_0/design_1_axi_mem_intercon_imp_auto_pc_0_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s00_couplers/auto_pc'
+Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_axi_mem_intercon_imp_auto_us_0/design_1_axi_mem_intercon_imp_auto_us_0/design_1_axi_mem_intercon_imp_auto_us_0_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s00_couplers/auto_us'
+Finished Parsing XDC File [c:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.gen/sources_1/bd/design_1/ip/design_1_axi_mem_intercon_imp_auto_us_0/design_1_axi_mem_intercon_imp_auto_us_0/design_1_axi_mem_intercon_imp_auto_us_0_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s00_couplers/auto_us'
+Parsing XDC File [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1473.488 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 1473.488 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1473.488 ; gain = 668.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1473.488 ; gain = 668.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1473.488 ; gain = 668.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1473.488 ; gain = 668.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7129] Port ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_AXI_arlock[1] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_AXI_awlock[1] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1482.527 ; gain = 677.965
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 1657.887 ; gain = 853.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 1658.668 ; gain = 854.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 1668.652 ; gain = 864.090
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+----------------------------------------+----------+
+|      |BlackBox name                           |Instances |
++------+----------------------------------------+----------+
+|1     |design_1_afdm_mod_top_0_0               |         1|
+|2     |design_1_axi_mem_intercon_imp_auto_pc_0 |         1|
+|3     |design_1_axi_mem_intercon_imp_auto_us_0 |         1|
+|4     |design_1_axi_smc_0                      |         1|
+|5     |design_1_processing_system7_0_0         |         1|
+|6     |design_1_rst_ps7_0_100M_0               |         1|
++------+----------------------------------------+----------+
+
+Report Cell Usage: 
++------+--------------------------------------+------+
+|      |Cell                                  |Count |
++------+--------------------------------------+------+
+|1     |design_1_afdm_mod_top_0               |     1|
+|2     |design_1_axi_mem_intercon_imp_auto_pc |     1|
+|3     |design_1_axi_mem_intercon_imp_auto_us |     1|
+|4     |design_1_axi_smc                      |     1|
+|5     |design_1_processing_system7_0         |     1|
+|6     |design_1_rst_ps7_0_100M               |     1|
++------+--------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:54 ; elapsed = 00:00:56 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:38 ; elapsed = 00:00:52 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 1917.867 ; gain = 1113.305
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 1917.867 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1930.641 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 1b317d6b
+INFO: [Common 17-83] Releasing license: Synthesis
+35 Infos, 40 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:02 ; elapsed = 00:01:07 . Memory (MB): peak = 1934.609 ; gain = 1382.930
+INFO: [Common 17-1381] The checkpoint 'C:/Users/hp/HW-AFDM-OTFS/vivado/afdm_zed/afdm_zed.runs/synth_1/design_1_wrapper.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Sep 29 13:45:10 2026...

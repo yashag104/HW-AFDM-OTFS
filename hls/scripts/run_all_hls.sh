@@ -34,6 +34,6 @@ for r in proj/*_W${WD}_R${WR}_${SCEN}/sol/impl/report/verilog/*_export.rpt; do
   printf "%-18s %6s %6s %4s %5s %8s %9s\n" "$b" \
     "$(awk '/^LUT:/{print $2}' "$r")" "$(awk '/^FF:/{print $2}' "$r")" \
     "$(awk '/^DSP:/{print $2}' "$r")" "$(awk '/^BRAM:/{print $2}' "$r")" \
-    "$(awk '/post-implementation:/{print $3}' "$r")" "$lat" >> "$OUT"
+    "$(awk '/post-implementation:/{print $4}' "$r")" "$lat" >> "$OUT"
 done
 cat "$OUT"
