@@ -1,0 +1,4 @@
+dfts_LEO-Ka study_dfts('LEO-Ka')
+dfts_LEO-S study_dfts('LEO-S')
+dfts_V2X study_dfts('V2X')
+papr study_papr

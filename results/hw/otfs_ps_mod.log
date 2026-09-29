@@ -1,0 +1,509 @@
+
+****** vitis-run v2025.2 (64-bit)
+  **** SW Build 6295257 on 2025-11-13-08:29:27
+  **** Start of session at: Tue Sep 29 11:02:09 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+  **** HLS Build v2025.2 6295257
+Sourcing Tcl script 'C:/Users/hp/HW-AFDM-OTFS/hls/scripts/run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa 
+WARNING: [HLS 200-2182] The 'otfs_ps_mod_W12_R16_LEOKa' project will not automatically appear within Vitis IDE workspaces and is meant only for TCL batch use.  Please use open_component instead of open_project/open_solution to generate Vitis IDE compatible component files and directory structure.
+Resolution: For help on HLS 200-2182 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-2182.html
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa'.
+INFO: [HLS 200-1510] Running: set_top otfs_ps_mod 
+INFO: [HLS 200-1510] Running: add_files C:/Users/hp/HW-AFDM-OTFS/hls/src/blocks.cpp -cflags -DWD=12 -DWR=16 -IC:/Users/hp/HW-AFDM-OTFS/hls/src -IC:/Users/hp/HW-AFDM-OTFS/hls/generated/R16_LEOKa 
+INFO: [HLS 200-10] Adding design file 'C:/Users/hp/HW-AFDM-OTFS/hls/src/blocks.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C:/Users/hp/HW-AFDM-OTFS/hls/tb/tb_blocks.cpp -cflags -DWD=12 -DWR=16 -IC:/Users/hp/HW-AFDM-OTFS/hls/src -IC:/Users/hp/HW-AFDM-OTFS/hls/generated/R16_LEOKa 
+INFO: [HLS 200-10] Adding test bench file 'C:/Users/hp/HW-AFDM-OTFS/hls/tb/tb_blocks.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset sol -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020clg484-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1510] Running: create_clock -period 10.0 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csim_design -argv C:/Users/hp/HW-AFDM-OTFS/hls/generated/W12_R16_LEOKa 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [HLS 200-2191] C-Simulation will use clang-16 as the compiler
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../../tb/tb_blocks.cpp in debug mode
+   Compiling ../../../../../src/blocks.cpp in debug mode
+   Generating csim.exe
+In file included from ../../../../../tb/tb_blocks.cpp:6:
+In file included from C:/Users/hp/HW-AFDM-OTFS/hls/src\blocks.h:5:
+In file included from C:/Users/hp/HW-AFDM-OTFS/hls/src/types.h:7:
+In file included from D:/2025.2/Vitis/include\ap_fixed.h:9:
+In file included from D:/2025.2/Vitis/include\etc/ap_common.h:668:
+In file included from D:/2025.2/Vitis/include\etc/ap_private.h:68:
+In file included from D:/2025.2/Vitis/include\hls_half.h:26:
+In file included from D:/2025.2/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from D:/2025.2/Vitis/include\hls_fpo.h:140:
+In file included from D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+D:/2025.2/Vitis/include\gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+In file included from ../../../../../src/blocks.cpp:3:
+In file included from C:/Users/hp/HW-AFDM-OTFS/hls/src/blocks.h:5:
+In file included from C:/Users/hp/HW-AFDM-OTFS/hls/src/types.h:7:
+In file included from D:/2025.2/Vitis/include\ap_fixed.h:9:
+In file included from D:/2025.2/Vitis/include\etc/ap_common.h:668:
+In file included from D:/2025.2/Vitis/include\etc/ap_private.h:68:
+In file included from D:/2025.2/Vitis/include\hls_half.h:26:
+In file included from D:/2025.2/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from D:/2025.2/Vitis/include\hls_fpo.h:140:
+In file included from D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+D:/2025.2/Vitis/include\gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+WD = 12, WR = 16, vectors: C:/Users/hp/HW-AFDM-OTFS/hls/generated/W12_R16_LEOKa
+  afdm_mod            20 frames,   5120 samples, 0 mismatches
+  afdm_demod          20 frames,   5120 samples, 0 mismatches
+  afdm_mod_c2zero     20 frames,   5120 samples, 0 mismatches
+  afdm_demod_c2zero   20 frames,   5120 samples, 0 mismatches
+  otfs_zak_mod        20 frames,   5120 samples, 0 mismatches
+  otfs_zak_demod      20 frames,   5120 samples, 0 mismatches
+  otfs_isfft_mod      20 frames,   5120 samples, 0 mismatches
+  otfs_sfft_demod     20 frames,   5120 samples, 0 mismatches
+  otfs_ps_mod         20 frames,   5120 samples, 0 mismatches
+  ofdm_mod            20 frames,   5120 samples, 0 mismatches
+  ofdm_demod          20 frames,   5120 samples, 0 mismatches
+PASS: bit-exact with MATLAB
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:11; Allocated memory: 0.707 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 2.08 seconds; current allocated memory: 138.766 MB.
+INFO: [HLS 200-2191] C-Synthesis will use clang-16 as the compiler
+INFO: [HLS 200-10] Analyzing design file '../src/blocks.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 14.963 seconds; current allocated memory: 141.414 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 14,263 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,359 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,250 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,188 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,116 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,126 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,126 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,144 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,137 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,137 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,129 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,123 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,123 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,123 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,127 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,182 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_42_1' is marked as complete unroll implied by the pipeline pragma (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:42:22)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_42_1' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:42:22) in function 'bitrev<4>' completely with a factor of 4 (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:40:0)
+INFO: [HLS 214-178] Inlining function 'cmul(cdata const&, crom const&, ap_fixed<32, 8, (ap_q_mode)5, (ap_o_mode)3, 0>&, ap_fixed<32, 8, (ap_q_mode)5, (ap_o_mode)3, 0>&) (.60.73.86)' into 'butterfly(cdata const&, cdata const&, crom const&, bool, cdata&, cdata&) (.57.70.83)' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:28:0)
+INFO: [HLS 214-178] Inlining function 'int bitrev<4>(int)' into 'void fft<16, 4>(cdata*, crom const*) (.54.67.80)' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:49:0)
+INFO: [HLS 214-178] Inlining function 'void fft<16, 4>(cdata*, crom const*) (.54.67.80)' into 'cols_fft(cdata*, crom const*)' (../src/blocks.cpp:112:0)
+INFO: [HLS 214-178] Inlining function 'void fft<16, 4>(cdata*, crom const*) (.54.67.80)' into 'rows_fft(cdata*, crom const*)' (../src/blocks.cpp:101:0)
+INFO: [HLS 214-241] Aggregating bram variable 's' with compact=bit mode in 24-bits (../src/blocks.cpp:151:0)
+INFO: [HLS 214-241] Aggregating bram variable 'x' with compact=bit mode in 24-bits (../src/blocks.cpp:151:0)
+INFO: [HLS 214-376] Pipelining loop< VITIS_LOOP_107_2> at ../src/blocks.cpp:107:27 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< VITIS_LOOP_105_1> at ../src/blocks.cpp:105:27 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< VITIS_LOOP_118_2> at ../src/blocks.cpp:118:27 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< VITIS_LOOP_116_1> at ../src/blocks.cpp:116:27 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< VITIS_LOOP_153_1> at ../src/blocks.cpp:153:23 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< window> at ../src/blocks.cpp:157:5 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< VITIS_LOOP_163_2> at ../src/blocks.cpp:163:23 due to pipeline_loops threshold
+INFO: [HLS 214-364] Automatically inlining function 'butterfly(cdata const&, cdata const&, crom const&, bool, cdata&, cdata&) (.57.70.83)' to improve effectiveness of pipeline pragma in function 'cols_fft(cdata*, crom const*)' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:69:13)
+INFO: [HLS 214-364] Automatically inlining function 'butterfly(cdata const&, cdata const&, crom const&, bool, cdata&, cdata&) (.57.70.83)' to improve effectiveness of pipeline pragma in function 'rows_fft(cdata*, crom const*)' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:69:13)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 10.237 seconds; current allocated memory: 143.699 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.004 seconds; current allocated memory: 143.699 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.055 seconds; current allocated memory: 149.094 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.053 seconds; current allocated memory: 151.656 MB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:64:1) to (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:61:9) in function 'rows_fft'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:64:1) to (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:61:9) in function 'cols_fft'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'rows_fft' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:22:9)...3 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'cols_fft' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:22:9)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.653 seconds; current allocated memory: 174.434 MB.
+INFO: [HLS 200-2061] Successfully converted nested loops 'stages'(C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:58:5) and 'butterflies'(C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:61:9) in function 'rows_fft' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'stages'(C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:58:5) and 'butterflies'(C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:61:9) in function 'cols_fft' into perfectly nested loops.
+INFO: [XFORM 203-541] Flattening a loop nest 'stages' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:58:5) in function 'rows_fft'.
+WARNING: [HLS 200-1946] Dependence pragma (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:65:1) in loop 'butterflies' may become invalid because the loop was flattened with the outer loop 'stages'.
+WARNING: [HLS 200-1946] Dependence pragma (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:65:1) in loop 'butterflies' may become invalid because the loop was flattened with the outer loop 'stages'.
+INFO: [XFORM 203-541] Flattening a loop nest 'stages' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:58:5) in function 'cols_fft'.
+WARNING: [HLS 200-1946] Dependence pragma (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:65:1) in loop 'butterflies' may become invalid because the loop was flattened with the outer loop 'stages'.
+WARNING: [HLS 200-1946] Dependence pragma (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:65:1) in loop 'butterflies' may become invalid because the loop was flattened with the outer loop 'stages'.
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.re' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:51).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.im' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:51).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.re' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:51).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.im' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:51).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.re'.
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.im'.
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.re'.
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.im'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.245 seconds; current allocated memory: 299.137 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'otfs_ps_mod' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'otfs_ps_mod_Pipeline_VITIS_LOOP_153_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_153_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_153_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.134 seconds; current allocated memory: 303.340 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.021 seconds; current allocated memory: 304.387 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cols_fft_Pipeline_VITIS_LOOP_116_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_116_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_116_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.583 seconds; current allocated memory: 304.770 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 304.785 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cols_fft_Pipeline_reorder' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'reorder'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'reorder'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 304.938 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.021 seconds; current allocated memory: 304.941 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cols_fft_Pipeline_stages_butterflies' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'stages_butterflies'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 16, loop 'stages_butterflies'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.135 seconds; current allocated memory: 308.062 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.078 seconds; current allocated memory: 308.148 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cols_fft_Pipeline_copy_out' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'copy_out'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'copy_out'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.081 seconds; current allocated memory: 308.219 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.022 seconds; current allocated memory: 308.219 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cols_fft_Pipeline_VITIS_LOOP_118_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_118_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_118_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 1.61 seconds; current allocated memory: 308.332 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.021 seconds; current allocated memory: 308.332 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cols_fft' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.035 seconds; current allocated memory: 308.395 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.026 seconds; current allocated memory: 308.617 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'rows_fft_Pipeline_VITIS_LOOP_105_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_105_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_105_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.036 seconds; current allocated memory: 308.672 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.022 seconds; current allocated memory: 308.785 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'rows_fft_Pipeline_reorder' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'reorder'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'reorder'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.037 seconds; current allocated memory: 308.957 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.023 seconds; current allocated memory: 308.957 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'rows_fft_Pipeline_stages_butterflies' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'stages_butterflies'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 16, loop 'stages_butterflies'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.866 seconds; current allocated memory: 311.438 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.072 seconds; current allocated memory: 311.645 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'rows_fft_Pipeline_copy_out' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'copy_out'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'copy_out'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.072 seconds; current allocated memory: 311.805 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.022 seconds; current allocated memory: 311.805 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'rows_fft_Pipeline_VITIS_LOOP_107_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_107_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_107_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.042 seconds; current allocated memory: 311.859 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.024 seconds; current allocated memory: 311.859 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'rows_fft' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.031 seconds; current allocated memory: 312.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.032 seconds; current allocated memory: 312.254 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'otfs_ps_mod_Pipeline_window' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'window'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 4, loop 'window'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.658 seconds; current allocated memory: 312.488 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.034 seconds; current allocated memory: 312.594 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'otfs_ps_mod_Pipeline_VITIS_LOOP_163_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_163_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_163_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.043 seconds; current allocated memory: 312.832 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.023 seconds; current allocated memory: 312.832 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'otfs_ps_mod' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.027 seconds; current allocated memory: 312.879 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.027 seconds; current allocated memory: 313.082 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'otfs_ps_mod_Pipeline_VITIS_LOOP_153_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'otfs_ps_mod_Pipeline_VITIS_LOOP_153_1' pipeline 'VITIS_LOOP_153_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'otfs_ps_mod_Pipeline_VITIS_LOOP_153_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.067 seconds; current allocated memory: 314.578 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cols_fft_Pipeline_VITIS_LOOP_116_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'cols_fft_Pipeline_VITIS_LOOP_116_1' pipeline 'VITIS_LOOP_116_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cols_fft_Pipeline_VITIS_LOOP_116_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.134 seconds; current allocated memory: 316.082 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cols_fft_Pipeline_reorder' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'cols_fft_Pipeline_reorder' pipeline 'reorder' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cols_fft_Pipeline_reorder'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.119 seconds; current allocated memory: 316.852 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cols_fft_Pipeline_stages_butterflies' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'cols_fft_Pipeline_stages_butterflies' pipeline 'stages_butterflies' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_12s_28_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_3s_3s_3_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'udiv_5s_5ns_3_9_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cols_fft_Pipeline_stages_butterflies'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.169 seconds; current allocated memory: 320.312 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cols_fft_Pipeline_copy_out' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'cols_fft_Pipeline_copy_out' pipeline 'copy_out' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cols_fft_Pipeline_copy_out'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.265 seconds; current allocated memory: 326.039 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cols_fft_Pipeline_VITIS_LOOP_118_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'cols_fft_Pipeline_VITIS_LOOP_118_2' pipeline 'VITIS_LOOP_118_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cols_fft_Pipeline_VITIS_LOOP_118_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.098 seconds; current allocated memory: 326.039 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cols_fft' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cols_fft'.
+INFO: [RTMG 210-278] Implementing memory 'otfs_ps_mod_cols_fft_tmp_re_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'otfs_ps_mod_cols_fft_col_re_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.138 seconds; current allocated memory: 326.367 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'rows_fft_Pipeline_VITIS_LOOP_105_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'rows_fft_Pipeline_VITIS_LOOP_105_1' pipeline 'VITIS_LOOP_105_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'rows_fft_Pipeline_VITIS_LOOP_105_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.151 seconds; current allocated memory: 327.605 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'rows_fft_Pipeline_reorder' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'rows_fft_Pipeline_reorder' pipeline 'reorder' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'rows_fft_Pipeline_reorder'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.131 seconds; current allocated memory: 328.465 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'rows_fft_Pipeline_stages_butterflies' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'rows_fft_Pipeline_stages_butterflies' pipeline 'stages_butterflies' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mul_16ns_12s_26_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_12s_26_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_3s_3s_3_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'udiv_5s_5ns_3_9_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'rows_fft_Pipeline_stages_butterflies'.
+INFO: [RTMG 210-279] Implementing memory 'otfs_ps_mod_rows_fft_Pipeline_stages_butterflies_TW16_INV_re_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'otfs_ps_mod_rows_fft_Pipeline_stages_butterflies_TW16_INV_im_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.184 seconds; current allocated memory: 331.012 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'rows_fft_Pipeline_copy_out' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'rows_fft_Pipeline_copy_out' pipeline 'copy_out' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'rows_fft_Pipeline_copy_out'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.254 seconds; current allocated memory: 336.812 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'rows_fft_Pipeline_VITIS_LOOP_107_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'rows_fft_Pipeline_VITIS_LOOP_107_2' pipeline 'VITIS_LOOP_107_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'rows_fft_Pipeline_VITIS_LOOP_107_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.109 seconds; current allocated memory: 337.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'rows_fft' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'rows_fft'.
+INFO: [RTMG 210-278] Implementing memory 'otfs_ps_mod_rows_fft_tmp_re_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'otfs_ps_mod_rows_fft_row_re_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.134 seconds; current allocated memory: 338.316 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'otfs_ps_mod_Pipeline_window' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'otfs_ps_mod_Pipeline_window' pipeline 'window' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mul_14ns_12s_26_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'otfs_ps_mod_Pipeline_window'.
+INFO: [RTMG 210-279] Implementing memory 'otfs_ps_mod_otfs_ps_mod_Pipeline_window_WINDOW_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.229 seconds; current allocated memory: 339.742 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'otfs_ps_mod_Pipeline_VITIS_LOOP_163_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'otfs_ps_mod_Pipeline_VITIS_LOOP_163_2' pipeline 'VITIS_LOOP_163_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'otfs_ps_mod_Pipeline_VITIS_LOOP_163_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.217 seconds; current allocated memory: 341.879 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'otfs_ps_mod' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'otfs_ps_mod/x' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'otfs_ps_mod/s' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'otfs_ps_mod' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'otfs_ps_mod'.
+INFO: [RTMG 210-279] Implementing memory 'otfs_ps_mod_TW16_FWD_im_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'otfs_ps_mod_g_re_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 0.123 seconds; current allocated memory: 342.500 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.995 seconds; current allocated memory: 346.195 MB.
+INFO: [HLS 200-2225] Wrote inferred directives to file C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/syn/inferred_directives.ini
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.498 seconds; current allocated memory: 353.473 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for otfs_ps_mod.
+INFO: [VLOG 209-307] Generating Verilog RTL for otfs_ps_mod.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 137.19 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:46; Allocated memory: 215.160 MB.
+INFO: [HLS 200-1510] Running: export_design -flow impl -rtl verilog -format ip_catalog 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Tue Sep 29 11:03:16 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+ERROR: [Common 17-1257] Failed to create directory 'C'.
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/sol_data.json outdir=C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip srcdir=C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol ippack_options_dict= ippack_options_dict=
+INFO: Copied 1 ipmisc file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/misc
+INFO: Copied 36 verilog file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/hdl/verilog
+INFO: Copied 32 vhdl file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/hdl/vhdl

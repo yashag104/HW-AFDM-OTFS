@@ -74,6 +74,27 @@ void ofdm_demod(const cdata r[N], cdata y[N]) {
     for (int n = 0; n < N; n++) y[n] = buf[n];
 }
 
+// ------------------------------------------------------ DFT-s-OFDM (NR uplink)
+// Full allocation (M = N): spreading DFT then OFDM IFFT, and the reverse.
+// Both transforms are built even though they cancel in floating point: a
+// real transmitter needs them for partial allocations (matlab/ofdm/dfts_*.m).
+
+void dfts_mod(const cdata x[N], cdata s[N]) {
+    cdata buf[N];
+    for (int n = 0; n < N; n++) buf[n] = x[n];
+    fft<N, 8>(buf, TW256_FWD);                 // spreading DFT
+    fft<N, 8>(buf, TW256_INV);                 // OFDM IFFT
+    for (int n = 0; n < N; n++) s[n] = buf[n];
+}
+
+void dfts_demod(const cdata r[N], cdata y[N]) {
+    cdata buf[N];
+    for (int n = 0; n < N; n++) buf[n] = r[n];
+    fft<N, 8>(buf, TW256_FWD);                 // OFDM FFT
+    fft<N, 8>(buf, TW256_INV);                 // despreading IDFT
+    for (int n = 0; n < N; n++) y[n] = buf[n];
+}
+
 // ---------------------------------------------------------------- OTFS helpers
 
 // K-point FFT along every delay row l: elements l + M*k, k = 0..K-1.

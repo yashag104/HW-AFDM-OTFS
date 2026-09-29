@@ -21,6 +21,11 @@ set rom  $root/generated/R${wr}_${scen}
 set vec  $root/generated/W${wd}_R${wr}_${scen}
 set cfl  "-DWD=$wd -DWR=$wr -I$root/src -I$rom"
 
+# Vitis 2025.2 stores design files relative to proj/ ("../src/blocks.cpp") but
+# resolves them against the working directory; run from proj/ so both agree
+# (from hls/ the design file was silently dropped from C simulation).
+file mkdir $root/proj
+cd $root/proj
 open_project -reset $root/proj/${top}_W${wd}_R${wr}_${scen}
 set_top $top
 add_files $root/src/blocks.cpp -cflags $cfl

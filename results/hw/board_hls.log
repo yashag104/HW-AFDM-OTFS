@@ -1,0 +1,433 @@
+
+****** vitis-run v2025.2 (64-bit)
+  **** SW Build 6295257 on 2025-11-13-08:29:27
+  **** Start of session at: Tue Sep 29 10:38:06 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+  **** HLS Build v2025.2 6295257
+Sourcing Tcl script 'C:/Users/hp/HW-AFDM-OTFS/hls/scripts/run_board_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset afdm_mod_top 
+WARNING: [HLS 200-2182] The 'afdm_mod_top' project will not automatically appear within Vitis IDE workspaces and is meant only for TCL batch use.  Please use open_component instead of open_project/open_solution to generate Vitis IDE compatible component files and directory structure.
+Resolution: For help on HLS 200-2182 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-2182.html
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top'.
+INFO: [HLS 200-1510] Running: set_top afdm_mod_top 
+INFO: [HLS 200-1510] Running: add_files C:/Users/hp/HW-AFDM-OTFS/hls/src/board_top.cpp -cflags -DWD=12 -DWR=16 -IC:/Users/hp/HW-AFDM-OTFS/hls/src -IC:/Users/hp/HW-AFDM-OTFS/hls/generated/R16_LEOKa 
+INFO: [HLS 200-10] Adding design file 'C:/Users/hp/HW-AFDM-OTFS/hls/src/board_top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files C:/Users/hp/HW-AFDM-OTFS/hls/src/blocks.cpp -cflags -DWD=12 -DWR=16 -IC:/Users/hp/HW-AFDM-OTFS/hls/src -IC:/Users/hp/HW-AFDM-OTFS/hls/generated/R16_LEOKa 
+INFO: [HLS 200-10] Adding design file 'C:/Users/hp/HW-AFDM-OTFS/hls/src/blocks.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C:/Users/hp/HW-AFDM-OTFS/hls/tb/tb_board.cpp -cflags -DWD=12 -DWR=16 -IC:/Users/hp/HW-AFDM-OTFS/hls/src -IC:/Users/hp/HW-AFDM-OTFS/hls/generated/R16_LEOKa 
+INFO: [HLS 200-10] Adding test bench file 'C:/Users/hp/HW-AFDM-OTFS/hls/tb/tb_board.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset sol -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020clg484-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1510] Running: create_clock -period 10.0 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csim_design -argv C:/Users/hp/HW-AFDM-OTFS/hls/generated/W12_R16_LEOKa 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [HLS 200-2191] C-Simulation will use clang-16 as the compiler
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../../tb/tb_board.cpp in debug mode
+   Compiling ../../../../../src/blocks.cpp in debug mode
+   Compiling ../../../../../src/board_top.cpp in debug mode
+   Generating csim.exe
+In file included from ../../../../../tb/tb_board.cpp:7:
+In file included from D:/2025.2/Vitis/include\ap_int.h:10:
+In file included from D:/2025.2/Vitis/include\etc/ap_common.h:668:
+In file included from D:/2025.2/Vitis/include\etc/ap_private.h:68:
+In file included from D:/2025.2/Vitis/include\hls_half.h:26:
+In file included from D:/2025.2/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from D:/2025.2/Vitis/include\hls_fpo.h:140:
+In file included from D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+D:/2025.2/Vitis/include\gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+In file included from ../../../../../src/blocks.cpp:3:
+In file included from C:/Users/hp/HW-AFDM-OTFS/hls/src/blocks.h:5:
+In file included from C:/Users/hp/HW-AFDM-OTFS/hls/src/types.h:7:
+In file included from D:/2025.2/Vitis/include\ap_fixed.h:9:
+In file included from D:/2025.2/Vitis/include\etc/ap_common.h:668:
+In file included from D:/2025.2/Vitis/include\etc/ap_private.h:68:
+In file included from D:/2025.2/Vitis/include\hls_half.h:26:
+In file included from D:/2025.2/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from D:/2025.2/Vitis/include\hls_fpo.h:140:
+In file included from D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+D:/2025.2/Vitis/include\gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+In file included from ../../../../../src/board_top.cpp:9:
+In file included from D:/2025.2/Vitis/include\ap_int.h:10:
+In file included from D:/2025.2/Vitis/include\etc/ap_common.h:668:
+In file included from D:/2025.2/Vitis/include\etc/ap_private.h:68:
+In file included from D:/2025.2/Vitis/include\hls_half.h:26:
+In file included from D:/2025.2/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from D:/2025.2/Vitis/include\hls_fpo.h:140:
+In file included from D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+D:/2025.2/Vitis/include\gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+D:/2025.2/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+afdm_mod_top: 20 frames, 5120 samples, 0 mismatches
+PASS: bit-exact with MATLAB
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:11; Allocated memory: 0.699 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 3.093 seconds; current allocated memory: 139.621 MB.
+INFO: [HLS 200-2191] C-Synthesis will use clang-16 as the compiler
+INFO: [HLS 200-10] Analyzing design file '../src/blocks.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file '../src/board_top.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 19.901 seconds; current allocated memory: 142.457 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 11,865 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 1,358 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 700 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 661 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 609 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 607 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 607 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 607 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 607 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 611 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 609 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 607 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 607 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 607 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 611 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 624 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_42_1' is marked as complete unroll implied by the pipeline pragma (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:42:22)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_42_1' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:42:22) in function 'bitrev<8>' completely with a factor of 8 (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:40:0)
+INFO: [HLS 214-178] Inlining function 'cmul(cdata const&, crom const&, ap_fixed<32, 8, (ap_q_mode)5, (ap_o_mode)3, 0>&, ap_fixed<32, 8, (ap_q_mode)5, (ap_o_mode)3, 0>&)' into 'butterfly(cdata const&, cdata const&, crom const&, bool, cdata&, cdata&)' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:28:0)
+INFO: [HLS 214-178] Inlining function 'int bitrev<8>(int)' into 'void fft<256, 8>(cdata*, crom const*)' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:49:0)
+INFO: [HLS 214-178] Inlining function 'void fft<256, 8>(cdata*, crom const*)' into 'afdm_mod(cdata const*, cdata*)' (../src/blocks.cpp:25:0)
+INFO: [HLS 214-178] Inlining function 'unpack(ap_uint<32>)' into 'afdm_mod_top(ap_uint<32> const*, ap_uint<32>*)' (../src/board_top.cpp:34:0)
+INFO: [HLS 214-178] Inlining function 'pack(cdata const&)' into 'afdm_mod_top(ap_uint<32> const*, ap_uint<32>*)' (../src/board_top.cpp:34:0)
+INFO: [HLS 214-376] Pipelining loop< pre_chirp> at ../src/blocks.cpp:28:5 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< post_chirp> at ../src/blocks.cpp:31:5 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< read_in> at ../src/board_top.cpp:40:5 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< write_out> at ../src/board_top.cpp:43:5 due to pipeline_loops threshold
+INFO: [HLS 214-364] Automatically inlining function 'butterfly(cdata const&, cdata const&, crom const&, bool, cdata&, cdata&)' to improve effectiveness of pipeline pragma in function 'afdm_mod(cdata const*, cdata*)' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:69:13)
+INFO: [HLS 214-115] Multiple burst reads of length 256 and bit width 32 in loop 'read_in'(../src/board_top.cpp:40:5) has been inferred on bundle 'gmem'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (../src/board_top.cpp:40:5)
+INFO: [HLS 214-115] Multiple burst writes of length 256 and bit width 32 in loop 'write_out'(../src/board_top.cpp:43:5) has been inferred on bundle 'gmem'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (../src/board_top.cpp:43:5)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 9.827 seconds; current allocated memory: 144.977 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 144.977 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.065 seconds; current allocated memory: 150.293 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.085 seconds; current allocated memory: 152.664 MB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:64:1) to (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:61:9) in function 'afdm_mod'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'afdm_mod' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:22:9)...7 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.318 seconds; current allocated memory: 175.770 MB.
+INFO: [HLS 200-2061] Successfully converted nested loops 'stages'(C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:58:5) and 'butterflies'(C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:61:9) in function 'afdm_mod' into perfectly nested loops.
+INFO: [XFORM 203-541] Flattening a loop nest 'stages' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:58:5) in function 'afdm_mod'.
+WARNING: [HLS 200-1946] Dependence pragma (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:65:1) in loop 'butterflies' may become invalid because the loop was flattened with the outer loop 'stages'.
+WARNING: [HLS 200-1946] Dependence pragma (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:65:1) in loop 'butterflies' may become invalid because the loop was flattened with the outer loop 'stages'.
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.re' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:51).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.im' (C:/Users/hp/HW-AFDM-OTFS/hls/src/fft.h:51).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.re'.
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'tmp.im'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.651 seconds; current allocated memory: 247.902 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'afdm_mod_top' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod_top_Pipeline_read_in' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'read_in'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'read_in'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 251.859 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.035 seconds; current allocated memory: 252.875 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'chirp_mul' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'chirp_mul'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, function 'chirp_mul'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.103 seconds; current allocated memory: 253.141 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.047 seconds; current allocated memory: 253.176 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod_Pipeline_pre_chirp' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'pre_chirp'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 5, loop 'pre_chirp'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.064 seconds; current allocated memory: 253.371 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.043 seconds; current allocated memory: 253.496 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod_Pipeline_reorder' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'reorder'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'reorder'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.076 seconds; current allocated memory: 253.805 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 253.828 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod_Pipeline_stages_butterflies' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'stages_butterflies'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 22, loop 'stages_butterflies'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.344 seconds; current allocated memory: 256.723 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.13 seconds; current allocated memory: 256.797 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod_Pipeline_copy_out' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'copy_out'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'copy_out'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.139 seconds; current allocated memory: 256.883 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.038 seconds; current allocated memory: 256.887 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod_Pipeline_post_chirp' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'post_chirp'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 5, loop 'post_chirp'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.059 seconds; current allocated memory: 257.012 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.036 seconds; current allocated memory: 257.016 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.046 seconds; current allocated memory: 257.125 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.039 seconds; current allocated memory: 257.305 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod_top_Pipeline_write_out' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'write_out'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'write_out'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.066 seconds; current allocated memory: 257.574 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.026 seconds; current allocated memory: 257.578 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'afdm_mod_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.044 seconds; current allocated memory: 257.652 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.046 seconds; current allocated memory: 257.832 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod_top_Pipeline_read_in' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'afdm_mod_top_Pipeline_read_in' pipeline 'read_in' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_read_in/m_axi_gmem_0_ARUSER' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod_top_Pipeline_read_in'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.802 seconds; current allocated memory: 259.641 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'chirp_mul' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'chirp_mul' pipeline 'chirp_mul' pipeline type 'function pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mul_15s_12s_26_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_12s_27_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'chirp_mul'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.259 seconds; current allocated memory: 262.027 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod_Pipeline_pre_chirp' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'afdm_mod_Pipeline_pre_chirp' pipeline 'pre_chirp' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod_Pipeline_pre_chirp'.
+INFO: [RTMG 210-279] Implementing memory 'afdm_mod_top_afdm_mod_Pipeline_pre_chirp_CHIRP2_re_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'afdm_mod_top_afdm_mod_Pipeline_pre_chirp_CHIRP2_im_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.364 seconds; current allocated memory: 263.668 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod_Pipeline_reorder' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'afdm_mod_Pipeline_reorder' pipeline 'reorder' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod_Pipeline_reorder'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.236 seconds; current allocated memory: 264.387 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod_Pipeline_stages_butterflies' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'afdm_mod_Pipeline_stages_butterflies' pipeline 'stages_butterflies' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mul_15ns_12s_26_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_12s_26_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_7s_7s_7_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'udiv_9s_9ns_7_13_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod_Pipeline_stages_butterflies'.
+INFO: [RTMG 210-279] Implementing memory 'afdm_mod_top_afdm_mod_Pipeline_stages_butterflies_TW256_INV_re_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'afdm_mod_top_afdm_mod_Pipeline_stages_butterflies_TW256_INV_im_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.399 seconds; current allocated memory: 267.270 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod_Pipeline_copy_out' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'afdm_mod_Pipeline_copy_out' pipeline 'copy_out' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod_Pipeline_copy_out'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.752 seconds; current allocated memory: 273.328 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod_Pipeline_post_chirp' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'afdm_mod_Pipeline_post_chirp' pipeline 'post_chirp' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod_Pipeline_post_chirp'.
+INFO: [RTMG 210-279] Implementing memory 'afdm_mod_top_afdm_mod_Pipeline_post_chirp_CHIRP1_re_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'afdm_mod_top_afdm_mod_Pipeline_post_chirp_CHIRP1_im_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 0.232 seconds; current allocated memory: 273.328 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod'.
+INFO: [RTMG 210-278] Implementing memory 'afdm_mod_top_afdm_mod_tmp_re_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'afdm_mod_top_afdm_mod_buf_re_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.369 seconds; current allocated memory: 273.934 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod_top_Pipeline_write_out' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'afdm_mod_top_Pipeline_write_out' pipeline 'write_out' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_AWUSER' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'afdm_mod_top_Pipeline_write_out/m_axi_gmem_0_BREADY' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod_top_Pipeline_write_out'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.3 seconds; current allocated memory: 275.262 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'afdm_mod_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'afdm_mod_top/gmem' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'afdm_mod_top/in_r' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'afdm_mod_top/out_r' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'afdm_mod_top' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'in_r', 'out_r' and 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'afdm_mod_top'.
+INFO: [RTMG 210-278] Implementing memory 'afdm_mod_top_x_re_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.355 seconds; current allocated memory: 277.531 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.169 seconds; current allocated memory: 281.395 MB.
+INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+INFO: [HLS 200-2225] Wrote inferred directives to file C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/syn/inferred_directives.ini
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 3.811 seconds; current allocated memory: 289.359 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for afdm_mod_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for afdm_mod_top.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 136.99 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:51; Allocated memory: 150.273 MB.
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Tue Sep 29 10:39:16 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/sol_data.json outdir=C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip srcdir=C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol ippack_options_dict= ippack_options_dict=
+INFO: Copied 1 ipmisc file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip/misc
+INFO: Copied 34 verilog file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip/hdl/verilog
+INFO: Copied 28 vhdl file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip/hdl/vhdl
+INFO: Copied 10 swdriver file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip/drivers
+ipx::create_core: Time (s): cpu = 00:00:25 ; elapsed = 00:00:15 . Memory (MB): peak = 537.305 ; gain = 212.969
+INFO: Import ports from HDL: C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip/hdl/vhdl/afdm_mod_top.vhd (afdm_mod_top)
+INFO: Add axi4lite interface s_axi_control
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst_n
+INFO: Add interrupt interface interrupt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/2025.2/Vivado/data/ip'.
+INFO: Add axi4full interface m_axi_gmem
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip/component.xml
+INFO: Created IP archive C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip/xilinx_com_hls_afdm_mod_top_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Tue Sep 29 10:39:42 2026...
+INFO: [HLS 200-802] Generated output file afdm_mod_top/sol/impl/export.zip
+INFO: [HLS 200-2161] Finished Command export_design Elapsed time: 00:00:29; Allocated memory: 4.395 MB.
+INFO: [HLS 200-112] Total CPU user time: 12 seconds. Total CPU system time: 6 seconds. Total elapsed time: 95.498 seconds; peak allocated memory: 293.805 MB.
+INFO: [vitis-run 60-791] Total elapsed time: 0h 1m 37s
+INFO: [vitis-run 60-1662] Stopping dispatch session having empty uuid.

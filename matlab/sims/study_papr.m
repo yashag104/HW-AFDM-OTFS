@@ -5,7 +5,7 @@
 clear; rng(60);
 setup_paths;
 p       = sys_params('LEO-Ka');
-names   = {'AFDM', 'OTFS-Zak', 'OTFS-PS', 'OFDM'};
+names   = {'AFDM', 'OTFS-Zak', 'OTFS-PS', 'OFDM', 'DFT-s-OFDM'};
 nFrames = 10000;
 os      = 4;                                     % oversampling factor
 const   = qam_table(p.Q);
@@ -23,8 +23,13 @@ for n = 1:numel(names)
         papr(n, f) = 10 * log10(max(abs(so).^2) / mean(abs(so).^2));
     end
     ccdf(n, :) = mean(papr(n, :).' > thr, 1);
-    fprintf('%-9s PAPR at CCDF 1e-3: %.2f dB, mean %.2f dB\n', names{n}, ...
-            thr(find(ccdf(n, :) < 1e-3, 1)), mean(papr(n, :)));
+    t = thr(find(ccdf(n, :) < 1e-3, 1));
+    if isempty(t)                                % CCDF never drops below 1e-3 on the grid
+        tStr = sprintf('> %.2f', thr(end));
+    else
+        tStr = sprintf('%.2f', t);
+    end
+    fprintf('%-10s PAPR at CCDF 1e-3: %s dB, mean %.2f dB\n', names{n}, tStr, mean(papr(n, :)));
 end
 save(fullfile(results_dir(), 'papr.mat'), 'names', 'thr', 'ccdf', 'papr', 'os', 'p');
 

@@ -50,7 +50,9 @@ blocks = {'afdm_mod',          @(v) afdm_mod(v, p, fxc)
           'otfs_sfft_demod',   @(v) otfs_demod_sfft(v, p, fxc)
           'otfs_ps_mod',       @(v) otfs_mod_ps(v, p, fxc)
           'ofdm_mod',          @(v) ofdm_mod(v, p, fxc)
-          'ofdm_demod',        @(v) ofdm_demod(v, p, fxc)};
+          'ofdm_demod',        @(v) ofdm_demod(v, p, fxc)
+          'dfts_mod',          @(v) dfts_mod(v, p, fxc)
+          'dfts_demod',        @(v) dfts_demod(v, p, fxc)};
 rng(7);
 for b = 1:size(blocks, 1)
     f = fopen(fullfile(vecDir, [blocks{b, 1} '.txt']), 'w');

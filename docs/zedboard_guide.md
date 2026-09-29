@@ -72,7 +72,9 @@ Files used (already in the repo):
    - **Default Part**: open the **Boards** tab, search `ZedBoard`. If it is not listed, click
      **Refresh** and then the download/install icon next to ZedBoard. Select it. Next -> Finish.
 3. **Add the HLS IP.** Flow Navigator (left) -> **Settings** -> Project Settings -> **IP** ->
-   **Repository** -> **+** -> choose the `ip` folder from Part 1 step 10 -> Select. Vivado should
+   **Repository** -> **+** -> choose the `ip` folder from Part 1 step 10 -> Select.
+   (If Part 1 was run in batch with `hls/scripts/run_board_hls.tcl`, the folder is
+   `C:/Users/hp/HW-AFDM-OTFS/hls/proj/afdm_mod_top/sol/impl/ip`.) Vivado should
    report 1 IP found. OK.
 4. **Block design.** Flow Navigator -> IP INTEGRATOR -> **Create Block Design** (name `design_1`) -> OK.
 5. **Add the ARM processor.** In the Diagram, click **+** (Add IP), type `ZYNQ7`, double-click

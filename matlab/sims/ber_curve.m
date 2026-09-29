@@ -1,12 +1,14 @@
 function res = ber_curve(p, wfName, snrList, opt)
 % BER_CURVE  Monte-Carlo BER of one waveform over a list of SNRs.
 %   p       : parameters from sys_params
-%   wfName  : 'AFDM' | 'OTFS-Zak' | 'OTFS-ISFFT' | 'OTFS-PS' | 'OFDM'
+%   wfName  : 'AFDM' | 'OTFS-Zak' | 'OTFS-ISFFT' | 'OTFS-PS' | 'OFDM' | 'DFT-s-OFDM'
 %   snrList : Es/N0 values [dB] (per data symbol)
 %   opt     : options (missing fields take the defaults below)
 %     det       'mp-top'  MP, S largest taps per row
 %               'mp-path' MP, w taps per path per row (structured selection)
 %               'lmmse'   LMMSE on the full channel (reference)
+%               'fde'     one-tap frequency-domain equalizer, the standard
+%                         OFDM / DFT-s-OFDM receiver (those two only)
 %     S         taps per row for 'mp-top'                      (16)
 %     w         taps per path for 'mp-path'                    (5)
 %     csi       'genie' (true channel) or 'est' (pilot + OMP)  ('genie')
@@ -43,9 +45,13 @@ if strcmp(opt.csi, 'est'), opt.pilots = true; end
 assert(isempty(opt.fxc) || ~opt.pilots, 'ber_curve: fixed point is run without pilots.');
 % One OFDM symbol per frame cannot resolve Doppler of more than +/-2 bins from
 % comb pilots (shifts differing by the comb spacing look identical), so OFDM
-% is only a genie-CSI baseline here.
-assert(~(strcmp(wfName, 'OFDM') && strcmp(opt.csi, 'est')), ...
-       'ber_curve: OFDM is evaluated with genie CSI only.');
+% is only a genie-CSI baseline here. DFT-s-OFDM estimates on the same
+% subcarriers, so the same holds for it.
+ofdmLike = any(strcmp(wfName, {'OFDM', 'DFT-s-OFDM'}));
+assert(~(ofdmLike && strcmp(opt.csi, 'est')), ...
+       'ber_curve: OFDM and DFT-s-OFDM are evaluated with genie CSI only.');
+assert(~strcmp(opt.det, 'fde') || (ofdmLike && ~opt.pilots), ...
+       'ber_curve: fde is the OFDM / DFT-s-OFDM receiver and runs without pilots.');
 
 wf = waveform(wfName, p);
 [const, bits] = qam_table(p.Q);
@@ -83,6 +89,19 @@ for i = 1:nS
         r  = channel_matrix(ch, p, wf.pre, 0) * s;
         r  = r + sqrt(N0 / 2) * (randn(N, 1) + 1j * randn(N, 1));
 
+        % CFO correction (fde only): an OFDM / DFT-s-OFDM receiver removes the
+        % carrier offset before its FFT, or the one-tap equalizer fails outright
+        % once the Doppler exceeds a subcarrier (LEO-Ka: 9.3 kHz vs 7.5 kHz).
+        % A CP / reference-signal estimator converges to the power-weighted
+        % mean Doppler; genie value, as the CSI is genie. MP and LMMSE need no
+        % correction: the offset is part of the channel they are given.
+        cfo = ones(N, 1);
+        if strcmp(opt.det, 'fde')
+            nuc = sum(abs(ch.h).^2 .* ch.nu) / sum(abs(ch.h).^2);
+            cfo = exp(-1j * 2 * pi * nuc * p.Ts * (0:N - 1).');
+            r   = cfo .* r;
+        end
+
         % Gain control: the receiver sees g*r, so channel and noise scale too.
         g = 1;
         if ~isempty(opt.fxc) && opt.agc
@@ -100,8 +119,8 @@ for i = 1:nS
             chD = ch;
             chD.h = g * ch.h;
         end
-        H = eff_channel(wf, chD, p);
-        y = y - H * lay.xp;                       % remove the (known) pilot
+        H = wf.DemM * (cfo .* channel_matrix(chD, p, wf.pre, 0)) * wf.ModM;   % = eff_channel when cfo = 1
+        y = y - H * lay.xp;                      % remove the (known) pilot
         H(:, ~isData) = 0;                        % pilot/guard positions carry no data
 
         etaMask = true(N, 1);
@@ -109,6 +128,9 @@ for i = 1:nS
         switch opt.det
             case 'lmmse'
                 xd  = lmmse_detector(y, H(:, isData), N0g, const);
+                it  = 0;  k = 1;
+            case 'fde'
+                xd  = fde_detector(y, H, N0g, const, strcmp(wfName, 'DFT-s-OFDM'));
                 it  = 0;  k = 1;
             case 'mp-top'
                 [idx, val, k, dr] = sparsify_rows(H, opt.S);

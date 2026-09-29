@@ -1,6 +1,6 @@
 function plot_studies(which)
 % PLOT_STUDIES  Figures for the saved study results (results/*.mat -> results/*.png).
-%   which : 'fairness' | 'taps' | 'estimation' | 'wordlength'
+%   which : 'fairness' | 'taps' | 'estimation' | 'wordlength' | 'dfts'
 % Every point carries its 95 % confidence interval; V2X panels are marked
 % because the V2X tap profile is still a placeholder.
 switch which
@@ -8,6 +8,7 @@ switch which
     case 'taps',       taps();
     case 'estimation', estimation();
     case 'wordlength', wordlength();
+    case 'dfts',       dfts();
     otherwise, error('plot_studies:which', 'Unknown figure "%s".', which);
 end
 end
@@ -92,6 +93,30 @@ for n = 1:numel(d.names)
     legend(ax, 'Location', 'southwest', 'Box', 'off', 'FontSize', 8);
 end
 save_figure(fig, 'wordlength');
+end
+
+% ---------------------------------------------------------------------------
+function dfts()
+% AFDM against DFT-s-OFDM: both with MP (same detector datapath), and the
+% one-tap FDE receivers (lighter) that OFDM-family hardware actually ships.
+scen  = {'V2X', 'LEO-S', 'LEO-Ka'};
+curve = {'AFDM', 'mp-top', 'AFDM, MP', false
+         'DFT-s-OFDM', 'mp-top', 'DFT-s-OFDM, MP', false
+         'DFT-s-OFDM', 'fde', 'DFT-s-OFDM, one-tap FDE', true
+         'OFDM', 'fde', 'OFDM, one-tap FDE', true};
+[fig, tl] = new_figure(1, 3, 1500, 420);
+for s = 1:3
+    d = load(fullfile(results_dir(), ['dfts_' strrep(scen{s}, '-', '') '.mat']));
+    ax = nexttile(tl); hold(ax, 'on');
+    for c = 1:size(curve, 1)
+        k = find(strcmp(d.runs(:, 1), curve{c, 1}) & strcmp(d.runs(:, 2), curve{c, 2}));
+        plot_ber(ax, d.snr, d.R{k}, curve{c, 1}, curve{c, 3}, curve{c, 4});
+    end
+    style_axes(ax, [d.snr(1) d.snr(end)], 'E_s/N_0 [dB]');
+    title(ax, panel_name(scen{s}), 'FontWeight', 'normal');
+    if s == 1, legend(ax, 'Location', 'southwest', 'Box', 'off', 'FontSize', 8); end
+end
+save_figure(fig, 'dfts');
 end
 
 % ---------------------------------------------------------------------------

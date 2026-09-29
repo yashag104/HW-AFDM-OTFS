@@ -15,3 +15,5 @@ void otfs_sfft_demod(const cdata r[N], cdata y[N]);   // Wigner + SFFT      (3 F
 void otfs_ps_mod(const cdata x[N], cdata s[N]);       // ISFFT + TF window + Heisenberg
 void ofdm_mod(const cdata x[N], cdata s[N]);          // OFDM baseline: IFFT_N
 void ofdm_demod(const cdata r[N], cdata y[N]);        // OFDM baseline: FFT_N
+void dfts_mod(const cdata x[N], cdata s[N]);          // DFT-s-OFDM: DFT_N spread, IFFT_N
+void dfts_demod(const cdata r[N], cdata y[N]);        // DFT-s-OFDM: FFT_N, IDFT_N despread

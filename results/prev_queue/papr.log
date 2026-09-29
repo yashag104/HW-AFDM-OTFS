@@ -1,0 +1,6 @@
+AFDM      PAPR at CCDF 1e-3: 11.50 dB, mean 8.39 dB
+OTFS-Zak  PAPR at CCDF 1e-3: 11.00 dB, mean 8.19 dB
+OTFS-PS   PAPR at CCDF 1e-3:  dB, mean 10.24 dB
+OFDM      PAPR at CCDF 1e-3: 11.25 dB, mean 8.40 dB
+Saved results/papr.mat and .png
+EXIT 0

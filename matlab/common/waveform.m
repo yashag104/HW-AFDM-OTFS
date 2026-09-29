@@ -1,6 +1,6 @@
 function wf = waveform(name, p)
 % WAVEFORM  Bundle the modulator, demodulator and prefix of one waveform.
-%   name : 'AFDM' | 'OTFS-Zak' | 'OTFS-ISFFT' | 'OTFS-PS' | 'OFDM'
+%   name : 'AFDM' | 'OTFS-Zak' | 'OTFS-ISFFT' | 'OTFS-PS' | 'OFDM' | 'DFT-s-OFDM'
 %   p    : parameters from sys_params
 %   wf   : struct with
 %            name  - waveform name
@@ -29,6 +29,10 @@ switch name
     case 'OFDM'
         wf.mod   = @(x, fxc) ofdm_mod(x, p, fxc);
         wf.demod = @(r, fxc) ofdm_demod(r, p, fxc);
+        wf.pre   = ones(p.Ncp, 1);
+    case 'DFT-s-OFDM'
+        wf.mod   = @(x, fxc) dfts_mod(x, p, fxc);
+        wf.demod = @(r, fxc) dfts_demod(r, p, fxc);
         wf.pre   = ones(p.Ncp, 1);
     otherwise
         error('waveform:name', 'Unknown waveform "%s".', name);
