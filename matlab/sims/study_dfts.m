@@ -19,6 +19,12 @@ base  = struct('S', 16, 'minErrs', 100, 'minFrames', 200, 'maxFrames', 3000, 'se
 R = cell(size(runs, 1), 1);
 for k = 1:size(runs, 1)
     opt = base;  opt.det = runs{k, 2};
+    if strcmp(opt.det, 'fde')
+        % FDE errors cluster in a few deep-fade frames (LEO-S, 20 dB: 184
+        % errors in 6 of 200 frames), so the bit-error stop rule ends too
+        % early and the CI is too narrow; FDE is cheap, so run more frames.
+        opt.minFrames = 5000;  opt.maxFrames = 20000;
+    end
     R{k} = ber_curve(p, runs{k, 1}, snr, opt);
     fprintf('%-7s %-10s %-7s BER %s\n', scen, runs{k, 1}, runs{k, 2}, sprintf('%.1e ', R{k}.ber));
 end

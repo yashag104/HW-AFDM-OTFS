@@ -27,6 +27,16 @@ void mp_detect(const cdata y[N], const idx_t col[N][S], const ctap h[N][S], var_
     static prob_t P[N][S][Q];     // variable -> observation messages, per edge
     static ll_t   LL[N][S][Q];    // observation -> variable log-likelihoods, per edge
     static lsum_t Lt[N][Q];       // per-symbol sums over the column
+    // Architecture: one factor-graph edge (a, s) per clock, its Q symbol values
+    // in parallel. Without these directives HLS unrolled the S x Q loops (all
+    // 220 DSPs, 12.8 ns > 10 ns clock), results/hw/mp_S16_small.log.
+#pragma HLS ARRAY_PARTITION variable=P  dim=3 complete
+#pragma HLS ARRAY_PARTITION variable=LL dim=3 complete
+#pragma HLS ARRAY_PARTITION variable=Lt dim=2 complete
+    static mean_t M1RE[NE], M1IM[NE];   // per-edge symbol mean (pass 1 -> pass 2)
+    static var_t  VX[NE];               // per-edge symbol variance
+    static mean_t MURE[N], MUIM[N];     // per-row interference mean
+    static var_t  VAR[N];               // per-row noise + interference variance
 
 init:
     for (int a = 0; a < N; a++)
@@ -44,67 +54,78 @@ count_data:
 iterations:
     for (it = 1; it <= ITER; it++) {
         // ---------- observation nodes ----------
-    obs:
-        for (int a = 0; a < N; a++) {
-            mean_t m1re[S], m1im[S];
-            var_t  vx[S];
-            mean_t mure = 0, muim = 0;
-            const var_t n0r = n0 + drop[a];   // noise + interference of the dropped taps
-            var_t  var  = n0r;
-            for (int s = 0; s < S; s++) {
-                mean_t er = 0, ei = 0;
-                var_t  e2 = 0;
-                for (int q = 0; q < Q; q++) {
-                    er += P[a][s][q] * CONST[q].re;
-                    ei += P[a][s][q] * CONST[q].im;
-                    e2 += P[a][s][q] * CONST_POW[q];
-                }
-                mean_t mag = er * er + ei * ei;
-                vx[s]   = (e2 > mag) ? var_t(e2 - mag) : var_t(0);
-                m1re[s] = er;  m1im[s] = ei;
-                mure += h[a][s].re * er - h[a][s].im * ei;
-                muim += h[a][s].re * ei + h[a][s].im * er;
-                var  += (h[a][s].re * h[a][s].re + h[a][s].im * h[a][s].im) * vx[s];
+        // Pass 1, every edge e = (a, s) in one pipeline: symbol mean and
+        // variance of the edge, and the row sums mu, var (same order of
+        // additions as the row loop it replaces, so results are unchanged).
+        mean_t mure = 0, muim = 0;
+        var_t  var  = 0;
+    obs_mean:
+        for (int e = 0; e < NE; e++) {
+#pragma HLS PIPELINE II=1
+            const int a = e / S, s = e % S;
+            if (s == 0) { mure = 0; muim = 0; var = n0 + drop[a]; }
+            mean_t er = 0, ei = 0;
+            var_t  e2 = 0;
+            for (int q = 0; q < Q; q++) {
+                er += P[a][s][q] * CONST[q].re;
+                ei += P[a][s][q] * CONST[q].im;
+                e2 += P[a][s][q] * CONST_POW[q];
             }
-            for (int s = 0; s < S; s++) {
-                const tap_t hr = h[a][s].re, hi = h[a][s].im;
-                mean_t ure = mure - (hr * m1re[s] - hi * m1im[s]);
-                mean_t uim = muim - (hr * m1im[s] + hi * m1re[s]);
-                var_t  ve  = var - (hr * hr + hi * hi) * vx[s];
-                if (ve < n0r) ve = n0r;
-                inv_t  iv  = inv_t(1) / ve;
-                for (int q = 0; q < Q; q++) {
-                    mean_t dr = y[a].re - ure - (hr * CONST[q].re - hi * CONST[q].im);
-                    mean_t di = y[a].im - uim - (hr * CONST[q].im + hi * CONST[q].re);
-                    LL[a][s][q] = -((dr * dr + di * di) * iv);
-                }
+            mean_t mag = er * er + ei * ei;
+            const var_t v = (e2 > mag) ? var_t(e2 - mag) : var_t(0);
+            VX[e] = v;  M1RE[e] = er;  M1IM[e] = ei;
+            mure += h[a][s].re * er - h[a][s].im * ei;
+            muim += h[a][s].re * ei + h[a][s].im * er;
+            var  += (h[a][s].re * h[a][s].re + h[a][s].im * h[a][s].im) * v;
+            if (s == S - 1) { MURE[a] = mure; MUIM[a] = muim; VAR[a] = var; }
+        }
+        // Pass 2: extrinsic interference of each edge and its log-likelihoods.
+    obs_ll:
+        for (int e = 0; e < NE; e++) {
+#pragma HLS PIPELINE II=1
+            const int a = e / S, s = e % S;
+            const var_t n0r = n0 + drop[a];   // noise + interference of the dropped taps
+            const tap_t hr = h[a][s].re, hi = h[a][s].im;
+            mean_t ure = MURE[a] - (hr * M1RE[e] - hi * M1IM[e]);
+            mean_t uim = MUIM[a] - (hr * M1IM[e] + hi * M1RE[e]);
+            var_t  ve  = VAR[a] - (hr * hr + hi * hi) * VX[e];
+            if (ve < n0r) ve = n0r;
+            inv_t  iv  = inv_t(1) / ve;
+            for (int q = 0; q < Q; q++) {
+                mean_t dr = y[a].re - ure - (hr * CONST[q].re - hi * CONST[q].im);
+                mean_t di = y[a].im - uim - (hr * CONST[q].im + hi * CONST[q].re);
+                LL[a][s][q] = -((dr * dr + di * di) * iv);
             }
         }
 
         // ---------- variable nodes: sum log-likelihoods per column ----------
     clear_sum:
-        for (int b = 0; b < N; b++)
+        for (int b = 0; b < N; b++) {
+#pragma HLS PIPELINE II=1
             for (int q = 0; q < Q; q++) Lt[b][q] = 0;
+        }
     scatter:
-        for (int a = 0; a < N; a++)
-            for (int s = 0; s < S; s++)
-                for (int q = 0; q < Q; q++) Lt[col[a][s]][q] += LL[a][s][q];
+        for (int e = 0; e < NE; e++) {
+#pragma HLS PIPELINE
+            const int a = e / S, s = e % S;
+            for (int q = 0; q < Q; q++) Lt[col[a][s]][q] += LL[a][s][q];
+        }
 
         // ---------- extrinsic messages with damping ----------
     var_msg:
-        for (int a = 0; a < N; a++) {
-            for (int s = 0; s < S; s++) {
-                lsum_t ext[Q];
-                for (int q = 0; q < Q; q++) ext[q] = Lt[col[a][s]][q] - LL[a][s][q];
-                lsum_t mx = ext[0];
-                for (int q = 1; q < Q; q++) if (ext[q] > mx) mx = ext[q];
-                prob_t ex[Q];
-                esum_t sum = 0;
-                for (int q = 0; q < Q; q++) { ex[q] = exp_lut(ext[q] - mx); sum += ex[q]; }
-                for (int q = 0; q < Q; q++) {
-                    prob_t pn = ex[q] / sum;
-                    P[a][s][q] = DAMP * pn + (prob_t(1) - DAMP) * P[a][s][q];
-                }
+        for (int e = 0; e < NE; e++) {
+#pragma HLS PIPELINE II=1
+            const int a = e / S, s = e % S;
+            lsum_t ext[Q];
+            for (int q = 0; q < Q; q++) ext[q] = Lt[col[a][s]][q] - LL[a][s][q];
+            lsum_t mx = ext[0];
+            for (int q = 1; q < Q; q++) if (ext[q] > mx) mx = ext[q];
+            prob_t ex[Q];
+            esum_t sum = 0;
+            for (int q = 0; q < Q; q++) { ex[q] = exp_lut(ext[q] - mx); sum += ex[q]; }
+            for (int q = 0; q < Q; q++) {
+                prob_t pn = ex[q] / sum;
+                P[a][s][q] = DAMP * pn + (prob_t(1) - DAMP) * P[a][s][q];
             }
         }
 
@@ -113,6 +134,7 @@ iterations:
         sym_t dec[N];
     decide:
         for (int b = 0; b < N; b++) {
+#pragma HLS PIPELINE II=1
             lsum_t mx = Lt[b][0];
             sym_t  arg = 0;
             for (int q = 1; q < Q; q++) if (Lt[b][q] > mx) { mx = Lt[b][q]; arg = q; }

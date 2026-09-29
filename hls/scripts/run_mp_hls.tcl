@@ -27,7 +27,10 @@ open_solution -reset sol -flow_target vivado
 set_part $part
 create_clock -period $period -name default
 
-csim_design -argv "$root/generated/mp/LEOKa_AFDM_S${s}_12dB.txt"
+# MP_CSIM=0 skips C-sim (10 min in Vitis); make mp-check runs the same test with g++.
+if {![info exists ::env(MP_CSIM)] || $::env(MP_CSIM) != 0} {
+    csim_design -argv "$root/generated/mp/LEOKa_AFDM_S${s}_12dB.txt"
+}
 csynth_design
 export_design -flow impl -rtl verilog -format ip_catalog
 exit
