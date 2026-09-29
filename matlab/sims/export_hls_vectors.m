@@ -63,6 +63,31 @@ for b = 1:size(blocks, 1)
     end
     fclose(f);
 end
+% ---- One-tap equalizer (dfts_fde): realistic received frames and gains ----
+% LEO-Ka channel at 16 dB, CFO removed, receive power scaled to 1 (AGC); the
+% gains are the bias-free MMSE gains of fde_detector.m.
+% Line format: r_re r_im w_re w_im out_re out_im
+wf = waveform('DFT-s-OFDM', p);
+const = qam_table(p.Q);
+N0 = 10^(-16 / 10);
+F  = fft(eye(p.N)) / sqrt(p.N);
+f = fopen(fullfile(vecDir, 'dfts_fde.txt'), 'w');
+for fr = 1:nFrames
+    ch  = gen_channel(p);
+    nuc = sum(abs(ch.h).^2 .* ch.nu) / sum(abs(ch.h).^2);
+    cfo = exp(-1j * 2 * pi * nuc * p.Ts * (0:p.N - 1).');
+    Hc  = cfo .* channel_matrix(ch, p, wf.pre, 0);
+    r   = Hc * dfts_mod(const(randi(p.Q, p.N, 1)), p, fxc) + sqrt(N0 / 2) * (randn(p.N, 1) + 1j * randn(p.N, 1));
+    g   = 1 / sqrt(mean(abs(r).^2));
+    d   = sum((F * (g * Hc)) .* conj(F), 2);   % per-subcarrier gain of the scaled channel
+    w   = conj(d) ./ (abs(d).^2 + g^2 * N0);
+    w   = w / mean(w .* d);                    % bias removed
+    rq  = fx(g * r, fxc.data);
+    wq  = fx(w, fxc.gain);
+    out = fde_fx(rq, wq, fxc);
+    fprintf(f, '%.17g %.17g %.17g %.17g %.17g %.17g\n', [real(rq) imag(rq) real(wq) imag(wq) real(out) imag(out)].');
+end
+fclose(f);
 fprintf('Exported ROMs to %s and %d frames/block to %s\n', romDir, nFrames, vecDir);
 end
 

@@ -12,4 +12,7 @@ function fxc = fx_config(Wd, Wt, Wc)
 fxc.data  = struct('W', Wd, 'I', 3);
 fxc.tw    = struct('W', Wt, 'I', 2);
 fxc.chirp = struct('W', Wc, 'I', 2);
+% One-tap equalizer gains (DFT-s-OFDM / OFDM): the largest MMSE gain is
+% 1/(2 sqrt(N0)), about 8 at 24 dB, so 5 integer bits ([-16, 16)).
+fxc.gain  = struct('W', Wt, 'I', 5);
 end

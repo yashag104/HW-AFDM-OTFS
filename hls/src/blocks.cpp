@@ -95,6 +95,24 @@ void dfts_demod(const cdata r[N], cdata y[N]) {
     for (int n = 0; n < N; n++) y[n] = buf[n];
 }
 
+// DFT-s-OFDM receiver with the one-tap equalizer (matlab/ofdm/fde_fx.m):
+// FFT, one complex gain per subcarrier, despreading IFFT. The gains come
+// from channel estimation (a separate block, as for the MP detector).
+void dfts_fde(const cdata r[N], const cgain w[N], cdata x[N]) {
+    cdata buf[N];
+    for (int n = 0; n < N; n++) buf[n] = r[n];
+    fft<N, 8>(buf, TW256_FWD);                 // OFDM FFT
+equalize:
+    for (int k = 0; k < N; k++) {
+        gacc_t re = gacc_t(buf[k].re * w[k].re) - gacc_t(buf[k].im * w[k].im);
+        gacc_t im = gacc_t(buf[k].re * w[k].im) + gacc_t(buf[k].im * w[k].re);
+        buf[k].re = re;                        // one rounding, as fx() in MATLAB
+        buf[k].im = im;
+    }
+    fft<N, 8>(buf, TW256_INV);                 // despreading IDFT
+    for (int n = 0; n < N; n++) x[n] = buf[n];
+}
+
 // ---------------------------------------------------------------- OTFS helpers
 
 // K-point FFT along every delay row l: elements l + M*k, k = 0..K-1.

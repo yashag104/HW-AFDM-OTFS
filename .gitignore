@@ -7,3 +7,16 @@ hls/generated/
 # MATLAB run logs
 results/*.log
 hls/proj/
+# Tool outputs (regenerate with vivado/build_zed.tcl, hls/scripts/*.tcl)
+vivado/afdm_zed_amd/
+vivado/*.log
+vivado/*.jou
+vivado/*.str
+dfx_runtime.txt
+vivado/dfx_runtime.txt
+# Vitis embedded workspace: builds and generated platform files
+vitis_sw/**/build/
+vitis_sw/**/export/
+vitis_sw/.rigel_lopper*/
+vitis_sw/_ide/
+vitis_sw/**/logs/

@@ -22,8 +22,14 @@ typedef ap_fixed<WR, 3, AP_RND, AP_SAT> win_t;   // OTFS-PS window (peak 2, see 
 // Also exact for data * win_t: fraction (WD-3) + (WR-3), integer 3 + 3 = 6.
 typedef ap_fixed<WD + WR + 4, 8> acc_t;
 
+// One-tap equalizer gain (matlab/fixed/fx_config.m, fxc.gain): range [-16, 16).
+typedef ap_fixed<WR, 5, AP_RND, AP_SAT> gain_t;
+// Exact data * gain: fraction (WD-3) + (WR-5), integer 3 + 5 + 1 (sum) + 1 (margin).
+typedef ap_fixed<WD + WR + 2, 10> gacc_t;
+
 struct cdata { data_t re, im; };
 struct crom  { rom_t  re, im; };
+struct cgain { gain_t re, im; };
 
 // Frame sizes (matlab/config/sys_params.m)
 const int N = 256;       // samples per frame

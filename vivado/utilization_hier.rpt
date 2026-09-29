@@ -1,0 +1,36 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Tue Sep 29 14:01:53 2026
+| Host         : SaY-PC running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -hierarchical_depth 3 -file C:/Users/hp/HW-AFDM-OTFS/vivado/utilization_hier.rpt
+| Design       : design_1_wrapper
+| Device       : xc7z020clg484-1
+| Speed File   : -1
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------+----------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+|       Instance       |                 Module                 | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++----------------------+----------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+| design_1_wrapper     |                                  (top) |       3082 |       2875 |      10 |  197 | 3813 |      0 |     13 |          8 |
+|   design_1_i         |                               design_1 |       3082 |       2875 |      10 |  197 | 3813 |      0 |     13 |          8 |
+|     axi_smc          |                     design_1_axi_smc_0 |        462 |        461 |       0 |    1 |  584 |      0 |      0 |          0 |
+|       inst           |             design_1_axi_smc_0_bd_afc3 |        462 |        461 |       0 |    1 |  584 |      0 |      0 |          0 |
+|     afdm_mod_top_0   |              design_1_afdm_mod_top_0_0 |       2105 |       1944 |       0 |  161 | 2543 |      0 |     13 |          8 |
+|       inst           | design_1_afdm_mod_top_0_0_afdm_mod_top |       2105 |       1944 |       0 |  161 | 2543 |      0 |     13 |          8 |
+|     axi_mem_intercon |            design_1_axi_mem_intercon_0 |        499 |        455 |      10 |   34 |  653 |      0 |      0 |          0 |
+|       s00_couplers   |                s00_couplers_imp_7HNO1D |        499 |        455 |      10 |   34 |  653 |      0 |      0 |          0 |
++----------------------+----------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

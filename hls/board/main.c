@@ -4,7 +4,8 @@
 //
 // Uses the driver Vitis generates for the HLS IP (xafdm_mod_top.h). If a name
 // below does not compile, open xparameters.h in the platform and use the base
-// address macro it lists for afdm_mod_top_0.
+// address macro it lists for afdm_mod_top_0. HLS renames the ports in/out to
+// in_r/out_r (reserved words in VHDL/Verilog), hence Set_in_r / Set_out_r.
 #include <stdio.h>
 #include "xil_cache.h"
 #include "xparameters.h"
@@ -27,8 +28,8 @@ int main(void) {
     Xil_DCacheFlushRange((UINTPTR)in_buf, sizeof(in_buf));     // IP reads DDR, not the cache
     Xil_DCacheFlushRange((UINTPTR)out_buf, sizeof(out_buf));
 
-    XAfdm_mod_top_Set_in(&ip, (u32)(UINTPTR)in_buf);
-    XAfdm_mod_top_Set_out(&ip, (u32)(UINTPTR)out_buf);
+    XAfdm_mod_top_Set_in_r(&ip, (u32)(UINTPTR)in_buf);
+    XAfdm_mod_top_Set_out_r(&ip, (u32)(UINTPTR)out_buf);
     XAfdm_mod_top_Start(&ip);
     while (!XAfdm_mod_top_IsDone(&ip)) { }
 

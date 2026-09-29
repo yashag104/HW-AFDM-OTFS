@@ -17,3 +17,4 @@ void ofdm_mod(const cdata x[N], cdata s[N]);          // OFDM baseline: IFFT_N
 void ofdm_demod(const cdata r[N], cdata y[N]);        // OFDM baseline: FFT_N
 void dfts_mod(const cdata x[N], cdata s[N]);          // DFT-s-OFDM: DFT_N spread, IFFT_N
 void dfts_demod(const cdata r[N], cdata y[N]);        // DFT-s-OFDM: FFT_N, IDFT_N despread
+void dfts_fde(const cdata r[N], const cgain w[N], cdata x[N]); // DFT-s-OFDM Rx: FFT_N, one-tap gains, IDFT_N
