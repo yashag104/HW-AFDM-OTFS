@@ -507,3 +507,205 @@ INFO: calling package_hls_ip ip_types=vitis sysgen json_file=C:/Users/hp/HW-AFDM
 INFO: Copied 1 ipmisc file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/misc
 INFO: Copied 36 verilog file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/hdl/verilog
 INFO: Copied 32 vhdl file(s) to C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/hdl/vhdl
+ipx::create_core: Time (s): cpu = 00:00:22 ; elapsed = 00:00:13 . Memory (MB): peak = 537.809 ; gain = 214.539
+INFO: Import ports from HDL: C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/hdl/vhdl/otfs_ps_mod.vhd (otfs_ps_mod)
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst
+INFO: Add ap_ctrl interface ap_ctrl
+INFO: Add data interface x_address0
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/2025.2/Vivado/data/ip'.
+INFO: Add data interface x_q0
+INFO: Add data interface s_address0
+INFO: Add data interface s_d0
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/component.xml
+INFO: Created IP archive C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip/xilinx_com_hls_otfs_ps_mod_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Tue Sep 29 11:03:41 2026...
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+
+C:\Users\hp\HW-AFDM-OTFS\hls\proj\otfs_ps_mod_W12_R16_LEOKa\sol\impl\verilog>D:/2025.2/Vivado/bin/vivado  -mode batch -source run_vivado.tcl   || exit $? 
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Tue Sep 29 11:03:43 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivado.tcl
+# source ./settings.tcl
+## set top_module otfs_ps_mod
+## set language verilog
+## set family zynq
+## set device xc7z020
+## set package -clg484
+## set speed -1
+## set clock ap_clk
+## set fsm_ext "off"
+## set add_io_buffers false 
+# source -notrace ./extraction.tcl
+# set vivado_proj_name project
+# set vivado_proj_dir .
+# set target_device "${device}${package}${speed}"
+# set target_clk_period_ns "10.000"
+# set target_clk_freq_hz [expr {floor(1000 / $target_clk_period_ns) * 1000000}]
+# set other_clks_freq_hz {}
+# set ip_vlnv xilinx.com:hls:otfs_ps_mod:1.0
+# set ip_repo_path ../ip
+# set bd_design_name bd_0
+# set bd_inst_name hls_inst
+# set bd_props {}
+# set has_synth true
+# set synth_design_args {-directive sdx_optimization_effort_high}
+# set synth_dcp ""
+# set synth_props {}
+# set has_impl 1
+# set impl_props {}
+# set has_subcore 0
+# set report_options [dict create]
+# dict set report_options report_level 2
+# dict set report_options report_max_paths 10
+# dict set report_options stdout_hls_reports 1
+# dict set report_options stdout_vivado_reports 0
+# dict set report_options hls_project otfs_ps_mod_W12_R16_LEOKa
+# dict set report_options hls_solution sol
+# dict set report_options has_synth $has_synth
+# dict set report_options has_impl $has_impl
+# dict set report_options vivado_reportbasename $top_module
+# dict set report_options vivado_reportdir ./report
+# dict set report_options hls_impl_dir ..
+# dict set report_options hls_reportdir ../report/$language
+# dict set report_options target_clk_period $target_clk_period_ns
+# dict set report_options target_device $target_device
+# dict set report_options language $language
+# dict set report_options clock_name $clock
+# dict set report_options error_if_impl_timing_fails false
+# dict set report_options topmodule "otfs_ps_mod"
+# dict set report_options funcmodules {otfs_ps_mod_otfs_ps_mod_Pipeline_VITIS_LOOP_153_1 otfs_ps_mod_cols_fft_Pipeline_VITIS_LOOP_116_1 otfs_ps_mod_cols_fft_Pipeline_reorder otfs_ps_mod_cols_fft_Pipeline_stages_butterflies otfs_ps_mod_cols_fft_Pipeline_copy_out otfs_ps_mod_cols_fft_Pipeline_VITIS_LOOP_118_2 otfs_ps_mod_cols_fft otfs_ps_mod_rows_fft_Pipeline_VITIS_LOOP_105_1 otfs_ps_mod_rows_fft_Pipeline_reorder otfs_ps_mod_rows_fft_Pipeline_stages_butterflies otfs_ps_mod_rows_fft_Pipeline_copy_out otfs_ps_mod_rows_fft_Pipeline_VITIS_LOOP_107_2 otfs_ps_mod_rows_fft otfs_ps_mod_otfs_ps_mod_Pipeline_window otfs_ps_mod_otfs_ps_mod_Pipeline_VITIS_LOOP_163_2}
+# dict set report_options bindmodules {otfs_ps_mod_flow_control_loop_pipe_sequential_init otfs_ps_mod_udiv_5s_5ns_3_9_1 otfs_ps_mod_mul_3s_3s_3_1_1 otfs_ps_mod_mul_16s_12s_28_1_1 otfs_ps_mod_cols_fft_tmp_re_RAM_AUTO_1R1W otfs_ps_mod_cols_fft_col_re_RAM_AUTO_1R1W otfs_ps_mod_mul_16s_12s_26_1_1 otfs_ps_mod_mul_16ns_12s_26_1_1 otfs_ps_mod_rows_fft_Pipeline_stages_butterflies_TW16_INV_re_ROM_AUTO_1R otfs_ps_mod_rows_fft_Pipeline_stages_butterflies_TW16_INV_im_ROM_AUTO_1R otfs_ps_mod_rows_fft_tmp_re_RAM_AUTO_1R1W otfs_ps_mod_rows_fft_row_re_RAM_AUTO_1R1W otfs_ps_mod_mul_14ns_12s_26_1_1 otfs_ps_mod_otfs_ps_mod_Pipeline_window_WINDOW_ROM_AUTO_1R otfs_ps_mod_TW16_FWD_im_ROM_AUTO_1R otfs_ps_mod_g_re_RAM_AUTO_1R1W}
+# dict set report_options max_module_depth 7
+# create_project $vivado_proj_name $vivado_proj_dir -part $target_device -force
+create_project: Time (s): cpu = 00:00:18 ; elapsed = 00:00:11 . Memory (MB): peak = 530.418 ; gain = 219.660
+# set_property target_language $language [current_project]
+# if { ![file exists $ip_repo_path] } {
+#   error "Cannot find packaged HLS IP"
+# }
+# set_property ip_repo_paths [file normalize $ip_repo_path] [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/2025.2/Vivado/data/ip'.
+# create_bd_design bd_0
+Wrote  : <C:\Users\hp\HW-AFDM-OTFS\hls\proj\otfs_ps_mod_W12_R16_LEOKa\sol\impl\verilog\project.srcs\sources_1\bd\bd_0\bd_0.bd> 
+# set cell_inst [create_bd_cell -type ip -vlnv $ip_vlnv $bd_inst_name]
+# if { [llength $bd_props] } { 
+#   set_property -dict $bd_props $cell_inst 
+# }
+# make_bd_pins_external $cell_inst
+# make_bd_intf_pins_external $cell_inst
+# set bd_clk_ports [get_bd_ports -filter {TYPE==clk}]
+# if { $target_clk_freq_hz ne "" } { 
+#   foreach bd_clk_port $bd_clk_ports {
+#     # Remove "_0" suffix from BD ports & interfaces so they match IP ports 
+#     set clk_name [regsub {_0$} [get_property name $bd_clk_port] {}]
+#     set port_freq_hz $target_clk_freq_hz
+#     if { [dict exists $other_clks_freq_hz $clk_name] } {
+#         set port_freq_hz [dict get $other_clks_freq_hz $clk_name]
+#     }
+#     set_property CONFIG.FREQ_HZ $port_freq_hz $bd_clk_port
+#   }
+# }
+# foreach bd_port [get_bd_intf_ports] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# foreach bd_port [get_bd_ports -filter {INTF!=TRUE}] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# set s_axi_addr_width_min 32
+WARNING: [BD 5-233] No interface ports matched 'get_bd_intf_ports -filter {MODE == "Slave" && VLNV =~ "xilinx.com:interface:aximm_rtl:*"}'
+# foreach bd_port [get_bd_intf_ports -filter {MODE == "Slave" && VLNV =~ "xilinx.com:interface:aximm_rtl:*"}] {
+#   set bd_port_addr_width [get_property CONFIG.ADDR_WIDTH $bd_port]
+#   if { $bd_port_addr_width < $s_axi_addr_width_min } {
+#     puts "INFO: Updating $bd_port CONFIG.ADDR_WIDTH to $s_axi_addr_width_min"
+#     set_property CONFIG.ADDR_WIDTH $s_axi_addr_width_min $bd_port
+#   }
+# }
+# set_msg_config -id {[BD 41-1265]} -severity {CRITICAL WARNING} -new_severity {INFO}
+# assign_bd_address
+INFO: [BD 41-3093] Triggering Legacy Auto Assign Algorithm
+Wrote  : <C:\Users\hp\HW-AFDM-OTFS\hls\proj\otfs_ps_mod_W12_R16_LEOKa\sol\impl\verilog\project.srcs\sources_1\bd\bd_0\bd_0.bd> 
+Verilog Output written to : C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+# set toprtl [make_wrapper -files [get_files ${bd_design_name}.bd] -top]
+# add_files -norecurse $toprtl
+# set top_inst_name [file root [file tail $toprtl]]
+# puts "Using BD top: $top_inst_name"
+Using BD top: bd_0_wrapper
+# set xdc_files [glob -nocomplain ./*.xdc]
+# if { [llength $xdc_files] } {
+#     add_files -fileset constrs_1 -norecurse $xdc_files
+# }
+# launch_runs synth_1 -scripts_only
+INFO: [BD 41-1662] The design 'bd_0.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hls_inst .
+Exporting to file C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/hw_handoff/bd_0.hwh
+Generated Hardware Definition File C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.hwdef
+INFO: [BD 41-3262] Generated VHDL Instantiation Template file c:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/bd_0.vho
+INFO: [BD 41-3262] Generated Verilog Instantiation Template file c:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/bd_0.veo
+INFO: [BD 41-3262] Generated System Verilog Instantiation Template file c:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.gen/sources_1/bd/bd_0/bd_0_sv.sveo
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+# foreach run [get_runs -filter {IS_SYNTHESIS == 1}] {
+#   reset_run [get_runs $run]
+# }
+# set_property XPM_LIBRARIES {XPM_MEMORY XPM_FIFO} [current_project]
+# hls_vivado_reports_setup $report_options
+TIMESTAMP: HLS-REPORT: initialize report directories: 2026-09-29 11:04:05 +0530
+# if { $has_subcore } { report_ip_status }
+# if { $has_synth || $has_impl } {
+#   # synth properties setting
+#   set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value {-mode out_of_context} -objects [get_runs synth_1]
+#   set ip_inst [get_ips -quiet ${bd_design_name}*${bd_inst_name}*]
+#   if { ![llength $ip_inst] } {
+#       error "Cannot find HLS IP instance: ${bd_design_name}*${bd_inst_name}*"
+#   }
+#   set synth_run [get_runs -filter {IS_SYNTHESIS == 1} ${ip_inst}*]
+#   if { ![llength $synth_run] } {
+#       error "Cannot find synth run for HLS IP: ${ip_inst}*"
+#   }
+# 
+#   if { [llength $synth_design_args] } {
+#       set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value $synth_design_args -objects $synth_run
+#   }
+# 
+#   if { [llength $synth_props] } {
+#     set_property -dict $synth_props $synth_run
+#   }
+# 
+#   # launch run synth
+#   launch_runs synth_1
+#   wait_on_run synth_1
+#   # synth reports
+#   hls_vivado_reports_synth synth_1 $report_options
+#   if { $synth_dcp ne "" } {
+#     file mkdir [file dirname $synth_dcp]
+#     set run_dcp [glob -nocomplain [get_property DIRECTORY $synth_run]/*.dcp]
+#     if { [llength $run_dcp] != 1 } { error "Cannot find single dcp file for run $synth_run" }
+#     file copy -force $run_dcp $synth_dcp
+#   }
+# }
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Tue Sep 29 11:04:06 2026] Launched bd_0_hls_inst_0_synth_1...
+Run output will be captured here: C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/runme.log
+[Tue Sep 29 11:04:06 2026] Launched synth_1...
+Run output will be captured here: C:/Users/hp/HW-AFDM-OTFS/hls/proj/otfs_ps_mod_W12_R16_LEOKa/sol/impl/verilog/project.runs/synth_1/runme.log
+[Tue Sep 29 11:04:06 2026] Waiting for synth_1 to finish...
+
