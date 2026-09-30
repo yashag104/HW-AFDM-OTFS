@@ -30,9 +30,10 @@ void mp_detect(const cdata y[N], const idx_t col[N][S], const ctap h[N][S], var_
     // Architecture: one factor-graph edge (a, s) per clock, its Q symbol values
     // in parallel. Without these directives HLS unrolled the S x Q loops (all
     // 220 DSPs, 12.8 ns > 10 ns clock), results/hw/mp_S16_small.log.
-#pragma HLS ARRAY_PARTITION variable=P  dim=3 complete
-#pragma HLS ARRAY_PARTITION variable=LL dim=3 complete
-#pragma HLS ARRAY_PARTITION variable=Lt dim=2 complete
+#pragma HLS ARRAY_PARTITION variable=P  type=complete dim=3
+#pragma HLS ARRAY_PARTITION variable=LL type=complete dim=3
+#pragma HLS ARRAY_PARTITION variable=Lt type=complete dim=2
+#pragma HLS BIND_STORAGE variable=Lt type=ram_t2p   // read + write every cycle in scatter (was II=4)
     static mean_t M1RE[NE], M1IM[NE];   // per-edge symbol mean (pass 1 -> pass 2)
     static var_t  VX[NE];               // per-edge symbol variance
     static mean_t MURE[N], MUIM[N];     // per-row interference mean
@@ -108,7 +109,11 @@ iterations:
         for (int e = 0; e < NE; e++) {
 #pragma HLS PIPELINE
             const int a = e / S, s = e % S;
-            for (int q = 0; q < Q; q++) Lt[col[a][s]][q] += LL[a][s][q];
+            const idx_t c = col[a][s];
+            for (int q = 0; q < Q; q++) {
+                const lsum_t t = Lt[c][q] + LL[a][s][q];   // saturated sum, one store per bank
+                Lt[c][q] = t;
+            }
         }
 
         // ---------- extrinsic messages with damping ----------

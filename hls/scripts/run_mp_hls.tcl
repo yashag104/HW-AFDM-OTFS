@@ -32,5 +32,8 @@ if {![info exists ::env(MP_CSIM)] || $::env(MP_CSIM) != 0} {
     csim_design -argv "$root/generated/mp/LEOKa_AFDM_S${s}_12dB.txt"
 }
 csynth_design
-export_design -flow impl -rtl verilog -format ip_catalog
+# MP_IMPL=0 stops after synthesis (quick schedule check).
+if {![info exists ::env(MP_IMPL)] || $::env(MP_IMPL) != 0} {
+    export_design -flow impl -rtl verilog -format ip_catalog
+}
 exit
