@@ -1,8 +1,8 @@
 LEO-Ka  AFDM       mp-top  BER 1.8e-01 7.5e-02 1.4e-02 9.3e-04 5.9e-05 4.6e-06 2.6e-06 
 LEO-Ka  AFDM       lmmse   BER 1.7e-01 7.2e-02 1.1e-02 3.9e-04 1.4e-05 0.0e+00 0.0e+00 
-LEO-Ka  DFT-s-OFDM fde     BER 3.8e-01 3.3e-01 3.1e-01 3.2e-01 3.3e-01 3.5e-01 3.1e-01 
+LEO-Ka  DFT-s-OFDM fde     BER 1.9e-01 9.4e-02 3.2e-02 2.0e-02 2.0e-02 2.6e-02 2.1e-02 
 LEO-Ka  DFT-s-OFDM mp-top  BER 1.7e-01 7.2e-02 1.3e-02 1.4e-03 6.7e-05 7.8e-06 5.9e-06 
 LEO-Ka  DFT-s-OFDM lmmse   BER 1.7e-01 7.2e-02 1.3e-02 1.4e-03 6.3e-05 8.5e-06 5.9e-06 
-LEO-Ka  OFDM       fde     BER 3.8e-01 3.4e-01 3.3e-01 3.4e-01 3.5e-01 3.7e-01 3.4e-01 
+LEO-Ka  OFDM       fde     BER 1.9e-01 9.1e-02 3.3e-02 2.1e-02 1.9e-02 2.5e-02 2.1e-02 
 LEO-Ka  OFDM       lmmse   BER 1.7e-01 6.9e-02 1.1e-02 5.2e-04 1.4e-05 0.0e+00 0.0e+00 
 EXIT 0

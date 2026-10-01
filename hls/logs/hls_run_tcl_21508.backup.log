@@ -1,0 +1,395 @@
+  **** HLS Build v2025.2 6295257
+Sourcing Tcl script 'C:/Users/hp/HW-AFDM-OTFS/hls/scripts/run_mp_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset mp_S16_small_t2p 
+WARNING: [HLS 200-2182] The 'mp_S16_small_t2p' project will not automatically appear within Vitis IDE workspaces and is meant only for TCL batch use.  Please use open_component instead of open_project/open_solution to generate Vitis IDE compatible component files and directory structure.
+Resolution: For help on HLS 200-2182 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-2182.html
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p'.
+INFO: [HLS 200-1510] Running: set_top mp_detect 
+INFO: [HLS 200-1510] Running: add_files C:/Users/hp/HW-AFDM-OTFS/hls/src/mp.cpp -cflags -DMP_S=16 -DMP_WT=10 -DMP_WP=10 -DMP_WM=14 -DMP_WV=14 -DMP_WL=14 -IC:/Users/hp/HW-AFDM-OTFS/hls/src 
+INFO: [HLS 200-10] Adding design file 'C:/Users/hp/HW-AFDM-OTFS/hls/src/mp.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C:/Users/hp/HW-AFDM-OTFS/hls/tb/tb_mp.cpp -cflags -DMP_S=16 -DMP_WT=10 -DMP_WP=10 -DMP_WM=14 -DMP_WV=14 -DMP_WL=14 -IC:/Users/hp/HW-AFDM-OTFS/hls/src 
+INFO: [HLS 200-10] Adding test bench file 'C:/Users/hp/HW-AFDM-OTFS/hls/tb/tb_mp.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset sol -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020clg484-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1510] Running: create_clock -period 10.0 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 8.771 seconds; current allocated memory: 139.324 MB.
+INFO: [HLS 200-2191] C-Synthesis will use clang-16 as the compiler
+INFO: [HLS 200-10] Analyzing design file '../src/mp.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 39.943 seconds; current allocated memory: 142.035 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 25,093 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 6,894 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,966 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,883 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,789 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,964 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,856 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,876 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,875 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,878 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,863 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,836 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,807 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,807 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,822 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 2,865 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_70_3' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:70:30)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_95_4' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:95:30)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_106_5' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:106:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_112_6' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:112:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_121_7' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:121:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_123_8' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:123:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_126_9' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:126:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_127_10' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:127:32)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_141_11' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:141:32)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_143_12' is marked as complete unroll implied by the pipeline pragma (../src/mp.cpp:143:32)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_70_3' (../src/mp.cpp:70:30) in function 'mp_detect' completely with a factor of 4 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_95_4' (../src/mp.cpp:95:30) in function 'mp_detect' completely with a factor of 4 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_106_5' (../src/mp.cpp:106:31) in function 'mp_detect' completely with a factor of 4 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_112_6' (../src/mp.cpp:112:31) in function 'mp_detect' completely with a factor of 4 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_121_7' (../src/mp.cpp:121:31) in function 'mp_detect' completely with a factor of 4 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_123_8' (../src/mp.cpp:123:31) in function 'mp_detect' completely with a factor of 3 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_126_9' (../src/mp.cpp:126:31) in function 'mp_detect' completely with a factor of 4 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_127_10' (../src/mp.cpp:127:32) in function 'mp_detect' completely with a factor of 4 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_141_11' (../src/mp.cpp:141:32) in function 'mp_detect' completely with a factor of 3 (../src/mp.cpp:26:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_143_12' (../src/mp.cpp:143:32) in function 'mp_detect' completely with a factor of 4 (../src/mp.cpp:26:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ9mp_detectPK5cdataPA16_K7ap_uintILi8EEPA16_K4ctap9ap_ufixedILi14ELi4EL9ap_q_mode0EL9ap_o_mode0ELi0EEPKSE_PKS2_ILi1EEPS2_ILi2EERS3_E2Lt': Complete partitioning on dimension 2. (../src/mp.cpp:29:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ9mp_detectPK5cdataPA16_K7ap_uintILi8EEPA16_K4ctap9ap_ufixedILi14ELi4EL9ap_q_mode0EL9ap_o_mode0ELi0EEPKSE_PKS2_ILi1EEPS2_ILi2EERS3_E2LL': Complete partitioning on dimension 3. (../src/mp.cpp:28:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ9mp_detectPK5cdataPA16_K7ap_uintILi8EEPA16_K4ctap9ap_ufixedILi14ELi4EL9ap_q_mode0EL9ap_o_mode0ELi0EEPKSE_PKS2_ILi1EEPS2_ILi2EERS3_E1P': Complete partitioning on dimension 3. (../src/mp.cpp:27:0)
+INFO: [HLS 214-241] Aggregating bram variable 'h' with compact=bit mode in 20-bits
+INFO: [HLS 214-241] Aggregating bram variable 'col' with compact=bit mode in 8-bits
+INFO: [HLS 214-241] Aggregating bram variable 'y' with compact=bit mode in 24-bits (../src/mp.cpp:26:0)
+INFO: [HLS 214-376] Pipelining loop< VITIS_LOOP_45_2> at ../src/mp.cpp:45:30 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< count_data> at ../src/mp.cpp:50:5 due to pipeline_loops threshold
+INFO: [HLS 214-376] Pipelining loop< keep> at ../src/mp.cpp:150:13 due to pipeline_loops threshold
+INFO: [HLS 214-364] Automatically inlining function 'exp_lut(ap_fixed<18, 13, (ap_q_mode)0, (ap_o_mode)0, 0>)' to improve effectiveness of pipeline pragma in function 'mp_detect(cdata const*, ap_uint<8> const (*) [16], ctap const (*) [16], ap_ufixed<14, 4, (ap_q_mode)0, (ap_o_mode)0, 0>, ap_ufixed<14, 4, (ap_q_mode)0, (ap_o_mode)0, 0> const*, ap_uint<1> const*, ap_uint<2>*, ap_uint<8>&)' (../src/mp.cpp:126:69)
+INFO: [HLS 214-364] Automatically inlining function 'exp_lut(ap_fixed<18, 13, (ap_q_mode)0, (ap_o_mode)0, 0>)' to improve effectiveness of pipeline pragma in function 'mp_detect(cdata const*, ap_uint<8> const (*) [16], ctap const (*) [16], ap_ufixed<14, 4, (ap_q_mode)0, (ap_o_mode)0, 0>, ap_ufixed<14, 4, (ap_q_mode)0, (ap_o_mode)0, 0> const*, ap_uint<1> const*, ap_uint<2>*, ap_uint<8>&)' (../src/mp.cpp:143:67)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 18.921 seconds; current allocated memory: 144.496 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.008 seconds; current allocated memory: 144.496 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.351 seconds; current allocated memory: 154.086 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.356 seconds; current allocated memory: 157.688 MB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../src/mp.cpp:65:1) to (../src/mp.cpp:81:17) in function 'mp_detect'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../src/mp.cpp:86:1) to (../src/mp.cpp:85:9) in function 'mp_detect'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../src/mp.cpp:118:1) to (../src/mp.cpp:117:9) in function 'mp_detect'... converting 25 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../src/mp.cpp:138:1) to (../src/mp.cpp:137:9) in function 'mp_detect'... converting 17 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.409 seconds; current allocated memory: 186.023 MB.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_44_1'(../src/mp.cpp:44:26) and 'VITIS_LOOP_45_2'(../src/mp.cpp:45:30) in function 'mp_detect' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'init'(../src/mp.cpp:43:5) and 'VITIS_LOOP_44_1'(../src/mp.cpp:44:26) in function 'mp_detect' into perfectly nested loops.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_44_1' (../src/mp.cpp:44:26) in function 'mp_detect'.
+INFO: [XFORM 203-541] Flattening a loop nest 'init' (../src/mp.cpp:43:5) in function 'mp_detect'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 1.413 seconds; current allocated memory: 261.059 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mp_detect' ...
+WARNING: [SYN 201-107] Renaming port name 'mp_detect/VAR' to 'mp_detect/VAR_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_init_VITIS_LOOP_44_1_VITIS_LOOP_45_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'init_VITIS_LOOP_44_1_VITIS_LOOP_45_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'init_VITIS_LOOP_44_1_VITIS_LOOP_45_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.441 seconds; current allocated memory: 264.887 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.079 seconds; current allocated memory: 265.910 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_count_data' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'count_data'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'count_data'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.082 seconds; current allocated memory: 265.984 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.042 seconds; current allocated memory: 266.016 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_obs_mean' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln80_2) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=sub_ln78) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'obs_mean'.
+WARNING: [HLS 200-887] Cannot meet target clock period from 'select' operation 14 bit ('empty_40', ../src/mp.cpp:67) to 'select' operation 14 bit ('muim', ../src/mp.cpp:79) (combination delay: 10.3312 ns) to honor II or Latency constraint in region 'obs_mean'.
+Resolution: For help on HLS 200-887 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-887.html
+WARNING: [HLS 200-887] Cannot meet target clock period from 'select' operation 14 bit ('empty_40', ../src/mp.cpp:67) to 'store' operation ('muim_write_ln61', ../src/mp.cpp:61) of variable 'muim', ../src/mp.cpp:79 14 bit on local variable 'muim', ../src/mp.cpp:61 (combination delay: 11.9192 ns) to honor II or Latency constraint in region 'obs_mean'.
+Resolution: For help on HLS 200-887 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-887.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 9, loop 'obs_mean'
+WARNING: [HLS 200-871] Estimated clock period (11.919 ns) exceeds the target (target clock period: 10.000 ns, clock uncertainty: 2.700 ns, effective delay budget: 7.300 ns).
+Resolution: For help on HLS 200-871 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-871.html
+WARNING: [HLS 200-1016] The critical path in module 'mp_detect_Pipeline_obs_mean' consists of the following:
+	'load' operation 14 bit ('muim_load') on local variable 'muim', ../src/mp.cpp:61 [34]  (0.000 ns)
+	'select' operation 14 bit ('empty_40', ../src/mp.cpp:67) [384]  (0.702 ns)
+	'add' operation 25 bit ('add_ln79_1', ../src/mp.cpp:79) [387]  (4.166 ns)
+	'add' operation 14 bit ('muim', ../src/mp.cpp:79) [393]  (1.812 ns)
+	'xor' operation 1 bit ('xor_ln79', ../src/mp.cpp:79) [395]  (0.000 ns)
+	'and' operation 1 bit ('and_ln79', ../src/mp.cpp:79) [396]  (0.978 ns)
+	'select' operation 1 bit ('select_ln79', ../src/mp.cpp:79) [403]  (0.000 ns)
+	'xor' operation 1 bit ('xor_ln79_2', ../src/mp.cpp:79) [408]  (0.000 ns)
+	'or' operation 1 bit ('or_ln79', ../src/mp.cpp:79) [409]  (0.000 ns)
+	'and' operation 1 bit ('and_ln79_3', ../src/mp.cpp:79) [411]  (0.993 ns)
+	'or' operation 1 bit ('or_ln79_1', ../src/mp.cpp:79) [417]  (0.978 ns)
+	'select' operation 14 bit ('muim', ../src/mp.cpp:79) [418]  (0.702 ns)
+	'store' operation ('muim_write_ln61', ../src/mp.cpp:61) of variable 'muim', ../src/mp.cpp:79 14 bit on local variable 'muim', ../src/mp.cpp:61 [470]  (1.588 ns)
+
+Resolution: For help on HLS 200-1016 see docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-1016.html
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.814 seconds; current allocated memory: 270.648 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.25 seconds; current allocated memory: 270.656 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_obs_ll' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln98_6) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=sub_ln97_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln98_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln98_2) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln98) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=sub_ln92) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln91) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=sub_ln90) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'obs_ll'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 31, loop 'obs_ll'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.838 seconds; current allocated memory: 274.902 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.334 seconds; current allocated memory: 274.910 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_clear_sum' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'clear_sum'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'clear_sum'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.345 seconds; current allocated memory: 275.344 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.047 seconds; current allocated memory: 275.516 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_scatter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'scatter'.
+INFO: [HLS 200-2199] The II Violation in module 'mp_detect_Pipeline_scatter' (loop 'scatter'): Potential resource conflict between 'load' operation 18 bit ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_37', ../src/mp.cpp:112) on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' and 'store' operation ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_36_write_ln112', ../src/mp.cpp:112) of variable 'add_ln112_7', ../src/mp.cpp:112 18 bit on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' on common resource 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4'.
+INFO: [HLS 200-2198] Existing conflicting constraints include from 'load' operation 18 bit ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_37', ../src/mp.cpp:112) on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' to 'load' operation 18 bit ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_37', ../src/mp.cpp:112) on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' with distance of 1 (conflict 1 of 2)
+INFO: [HLS 200-2198] Existing conflicting constraints include from 'load' operation 18 bit ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_37', ../src/mp.cpp:112) on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' to 'store' operation ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_36_write_ln112', ../src/mp.cpp:112) of variable 'add_ln112_7', ../src/mp.cpp:112 18 bit on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' with distance of 1 (conflict 2 of 2)
+INFO: [HLS 200-2199] The II Violation in module 'mp_detect_Pipeline_scatter' (loop 'scatter'): Potential resource conflict between 'load' operation 18 bit ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_37', ../src/mp.cpp:112) on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' and 'store' operation ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_36_write_ln112', ../src/mp.cpp:112) of constant 131072 18 bit on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' on common resource 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4'.
+INFO: [HLS 200-2198] Existing conflicting constraints include from 'load' operation 18 bit ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_37', ../src/mp.cpp:112) on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' to 'load' operation 18 bit ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_37', ../src/mp.cpp:112) on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' with distance of 1 (conflict 1 of 3)
+INFO: [HLS 200-2198] Existing conflicting constraints include from 'load' operation 18 bit ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_37', ../src/mp.cpp:112) on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' to 'store' operation ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_36_write_ln112', ../src/mp.cpp:112) of variable 'add_ln112_7', ../src/mp.cpp:112 18 bit on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' with distance of 1 (conflict 2 of 3)
+INFO: [HLS 200-2198] Existing conflicting constraints include from 'store' operation ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_36_write_ln112', ../src/mp.cpp:112) of variable 'add_ln112_7', ../src/mp.cpp:112 18 bit on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' to 'store' operation ('mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_36_write_ln112', ../src/mp.cpp:112) of constant 131072 18 bit on array 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4' with distance of 1 (conflict 3 of 3)
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 4, Depth = 5, loop 'scatter'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.205 seconds; current allocated memory: 276.848 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.097 seconds; current allocated memory: 276.852 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_var_msg' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln129_6) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln129_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln129_2) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln129) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'var_msg'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'var_msg'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.514 seconds; current allocated memory: 279.871 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.23 seconds; current allocated memory: 280.273 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_decide' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'decide'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 8, loop 'decide'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.438 seconds; current allocated memory: 282.059 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.147 seconds; current allocated memory: 282.590 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect_Pipeline_keep' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'keep'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'keep'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.165 seconds; current allocated memory: 282.789 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.37 seconds; current allocated memory: 282.840 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mp_detect' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.096 seconds; current allocated memory: 283.215 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 283.484 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_init_VITIS_LOOP_44_1_VITIS_LOOP_45_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'mp_detect_Pipeline_init_VITIS_LOOP_44_1_VITIS_LOOP_45_2' pipeline 'init_VITIS_LOOP_44_1_VITIS_LOOP_45_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_init_VITIS_LOOP_44_1_VITIS_LOOP_45_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.231 seconds; current allocated memory: 285.051 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_count_data' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'mp_detect_Pipeline_count_data' pipeline 'count_data' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_count_data'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.422 seconds; current allocated memory: 287.387 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_obs_mean' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'mp_detect_Pipeline_obs_mean' pipeline 'obs_mean' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'am_addmul_20s_20s_14ns_35_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_mulsub_14s_10s_24s_24_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_10ns_9ns_18_1_1': 3 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_10ns_9s_19_1_1': 3 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_10s_10s_20_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_10s_24_1_1': 3 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_14s_28_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_7_2_14_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_obs_mean'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 0.828 seconds; current allocated memory: 292.098 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_obs_ll' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'mp_detect_Pipeline_obs_ll' pipeline 'obs_ll' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-104] Estimated max fanout for 'mp_detect_Pipeline_obs_ll' is 5284 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'ama_addmulsub_20s_20s_14ns_30ns_35_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_14s_10s_24s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_14s_14s_28s_29_4_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_mulsub_11s_8ns_21s_21_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_mulsub_14s_10s_24s_24_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_10s_10s_20_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_10s_9ns_19_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_10s_9s_19_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_11s_9s_19_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_10s_24_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_14s_28_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_29s_16ns_44_2_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'udiv_18s_14ns_18_22_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_obs_ll'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 2.592 seconds; current allocated memory: 304.148 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_clear_sum' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_clear_sum'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 2 seconds. Elapsed time: 2.687 seconds; current allocated memory: 317.137 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_scatter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'mp_detect_Pipeline_scatter' pipeline 'scatter' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_scatter'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.342 seconds; current allocated memory: 317.926 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_var_msg' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'mp_detect_Pipeline_var_msg' pipeline 'var_msg' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_10ns_8ns_19s_19_4_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_10ns_10ns_19_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'udiv_22ns_15ns_22_26_1': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_var_msg'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.231 seconds; current allocated memory: 320.992 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_decide' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'mp_detect_Pipeline_decide' pipeline 'decide' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_decide'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 2.085 seconds; current allocated memory: 331.043 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect_Pipeline_keep' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'mp_detect_Pipeline_keep' pipeline 'keep' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect_Pipeline_keep'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.179 seconds; current allocated memory: 337.672 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mp_detect' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mp_detect/y' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mp_detect/col' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mp_detect/h' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mp_detect/n0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mp_detect/drop' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mp_detect/is_data' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mp_detect/xhat' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mp_detect/iters' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'mp_detect' to 'ap_ctrl_hs'.
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_3_RAM_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_3_RAM_Abkb' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_2_RAM_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_2_RAM_Acud' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_1_RAM_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_1_RAM_AdEe' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_RAM_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_RAM_AUTeOg' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_11_RAM_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_11_RAM_fYi' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_10_RAM_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_10_RAM_g8j' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_9_RAM_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_9_RAM_Ahbi' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_8_RAM_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_8_RAM_Aibs' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_7_RAM_T2P_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_7_RAM_TjbC' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_6_RAM_T2P_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_6_RAM_TkbM' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_5_RAM_T2P_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_5_RAM_TlbW' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4_RAM_T2P_AUTO_1R1W' to 'mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_4_RAM_Tmb6' due to the length limit 80
+INFO: [RTGEN 206-100] Generating core module 'mul_10ns_12ns_21_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mp_detect'.
+INFO: [RTMG 210-278] Implementing memory 'mp_detect_mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_3_RAM_Abkb' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mp_detect_VX_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mp_detect_MURE_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mp_detect_mp_detect_cdata_const_ap_uint_const_16_ctap_const_16_ap_ufixed_ap_ufi_7_RAM_TjbC' using auto RAMs.
+INFO: [HLS 200-2168] Implementing memory 'mp_detect_EXP_TABLE_ROM_AUTO_1R' using auto ROMs with 4 copies to ensure enough ports to satisfy II or latency constraints.
+INFO: [RTMG 210-278] Implementing memory 'mp_detect_dec_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.496 seconds; current allocated memory: 339.602 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 3.041 seconds; current allocated memory: 344.773 MB.
+INFO: [HLS 200-2225] Wrote inferred directives to file C:/Users/hp/HW-AFDM-OTFS/hls/proj/mp_S16_small_t2p/sol/syn/inferred_directives.ini
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 3 seconds. CPU system time: 1 seconds. Elapsed time: 4.346 seconds; current allocated memory: 359.941 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for mp_detect.
+INFO: [VLOG 209-307] Generating Verilog RTL for mp_detect.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 83.90 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:01:37; Allocated memory: 220.852 MB.
+INFO: [HLS 200-112] Total CPU user time: 20 seconds. Total CPU system time: 11 seconds. Total elapsed time: 108.696 seconds; peak allocated memory: 360.000 MB.
+INFO: [vitis-run 60-791] Total elapsed time: 0h 1m 53s
+INFO: [vitis-run 60-1662] Stopping dispatch session having empty uuid.
